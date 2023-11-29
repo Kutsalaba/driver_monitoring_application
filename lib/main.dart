@@ -1,14 +1,20 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
+import 'firebase_options.dart';
 import 'routes/app_router.dart';
 import 'services/injectible/injectible_init.dart';
 import 'styles/app_theme_data.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   //LOCALIZATION
   await EasyLocalization.ensureInitialized();

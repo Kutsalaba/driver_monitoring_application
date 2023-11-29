@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "587629951162",
+    "project_id": "driver-monitoring-application",
+    "storage_bucket": "driver-monitoring-application.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587629951162:android:08ddaa2671eeb4f50c6a83",
+        "android_client_info": {
+          "package_name": "com.example.driver_monitoring_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3vvhujyWzsMUXGNrAbVOMdEqA6q7U1Wk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
