@@ -77,6 +77,14 @@ class MenuItems extends StatelessWidget {
               AutoRouter.of(context).push(const AddDriverRoute());
             },
           ),
+          const SizedBox(height: 16),
+          CustomMenuTile(
+            itemText: 'Map',
+            iconPath: Assets.icons.location,
+            onTap: () {
+              AutoRouter.of(context).push(const GeoMapsRoute());
+            },
+          ),
           const SizedBox(height: 80),
         ],
       ),

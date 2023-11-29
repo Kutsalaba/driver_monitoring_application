@@ -8,27 +8,35 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i3;
+import 'package:auto_route/auto_route.dart' as _i4;
 import 'package:driver_monitoring_application/pages/add_driver_page/add_driver_page.dart'
     as _i1;
-import 'package:driver_monitoring_application/pages/home_page/home_page.dart'
+import 'package:driver_monitoring_application/pages/geo_maps_page/geo_maps_page.dart'
     as _i2;
+import 'package:driver_monitoring_application/pages/home_page/home_page.dart'
+    as _i3;
 
-abstract class $AppRouter extends _i3.RootStackRouter {
+abstract class $AppRouter extends _i4.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i3.PageFactory> pagesMap = {
+  final Map<String, _i4.PageFactory> pagesMap = {
     AddDriverRoute.name: (routeData) {
-      return _i3.AutoRoutePage<dynamic>(
+      return _i4.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i1.AddDriverPage(),
       );
     },
-    HomeRoute.name: (routeData) {
-      return _i3.AutoRoutePage<dynamic>(
+    GeoMapsRoute.name: (routeData) {
+      return _i4.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i2.HomePage(),
+        child: const _i2.GeoMapsPage(),
+      );
+    },
+    HomeRoute.name: (routeData) {
+      return _i4.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i3.HomePage(),
       );
     },
   };
@@ -36,8 +44,8 @@ abstract class $AppRouter extends _i3.RootStackRouter {
 
 /// generated route for
 /// [_i1.AddDriverPage]
-class AddDriverRoute extends _i3.PageRouteInfo<void> {
-  const AddDriverRoute({List<_i3.PageRouteInfo>? children})
+class AddDriverRoute extends _i4.PageRouteInfo<void> {
+  const AddDriverRoute({List<_i4.PageRouteInfo>? children})
       : super(
           AddDriverRoute.name,
           initialChildren: children,
@@ -45,13 +53,27 @@ class AddDriverRoute extends _i3.PageRouteInfo<void> {
 
   static const String name = 'AddDriverRoute';
 
-  static const _i3.PageInfo<void> page = _i3.PageInfo<void>(name);
+  static const _i4.PageInfo<void> page = _i4.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i2.HomePage]
-class HomeRoute extends _i3.PageRouteInfo<void> {
-  const HomeRoute({List<_i3.PageRouteInfo>? children})
+/// [_i2.GeoMapsPage]
+class GeoMapsRoute extends _i4.PageRouteInfo<void> {
+  const GeoMapsRoute({List<_i4.PageRouteInfo>? children})
+      : super(
+          GeoMapsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'GeoMapsRoute';
+
+  static const _i4.PageInfo<void> page = _i4.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i3.HomePage]
+class HomeRoute extends _i4.PageRouteInfo<void> {
+  const HomeRoute({List<_i4.PageRouteInfo>? children})
       : super(
           HomeRoute.name,
           initialChildren: children,
@@ -59,5 +81,5 @@ class HomeRoute extends _i3.PageRouteInfo<void> {
 
   static const String name = 'HomeRoute';
 
-  static const _i3.PageInfo<void> page = _i3.PageInfo<void>(name);
+  static const _i4.PageInfo<void> page = _i4.PageInfo<void>(name);
 }
