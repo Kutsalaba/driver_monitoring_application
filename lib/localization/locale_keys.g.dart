@@ -5,5 +5,10 @@ abstract class  LocaleKeys {
   static const termsOfUse = 'termsOfUse';
   static const privacyPolicy = 'privacyPolicy';
   static const exit = 'exit';
+  static const home = 'home';
+  static const drivers = 'drivers';
+  static const cars = 'cars';
+  static const help = 'help';
+  static const logOut = 'logOut';
 
 }

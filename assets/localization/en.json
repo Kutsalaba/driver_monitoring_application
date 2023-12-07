@@ -2,5 +2,10 @@
     "appName": "Drivers Monitoring",
     "termsOfUse": "Terms of use",
     "privacyPolicy": "Privacy Policy",
-    "exit": "Exit"
+    "exit": "Exit",
+    "home": "HOME",
+    "drivers": "DRIVERS",
+    "cars": "CARS",
+    "help": "HELP",
+    "logOut": "LOGOUT"
 }

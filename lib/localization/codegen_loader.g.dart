@@ -18,13 +18,23 @@ class CodegenLoader extends AssetLoader{
   "appName": "Drivers Monitoring",
   "termsOfUse": "Terms of use",
   "privacyPolicy": "Privacy Policy",
-  "exit": "Exit"
+  "exit": "Exit",
+  "home": "HOME",
+  "drivers": "DRIVERS",
+  "cars": "CARS",
+  "help": "HELP",
+  "logOut": "LOGOUT"
 };
 static const Map<String,dynamic> ua = {
   "appName": "Моніторинг водіїв",
   "termsOfUse": "Правила використання",
   "privacyPolicy": "Політика конфіденційності",
-  "exit": "Вихід"
+  "exit": "Вихід",
+  "home": "HOME",
+  "drivers": "DRIVERS",
+  "cars": "CARS",
+  "help": "HELP",
+  "logOut": "LOGOUT"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "ua": ua};
 }

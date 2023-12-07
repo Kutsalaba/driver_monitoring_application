@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomMenuTile extends StatelessWidget {
@@ -19,12 +20,11 @@ class CustomMenuTile extends StatelessWidget {
       onTap: onTap,
       child: Ink(
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SvgPicture.asset(
-              iconPath,
-              color: const Color(0xFFFFFFFF),
-            ),
-            const SizedBox(width: 12),
+            SizedBox(width: 20.w),
+            SvgPicture.asset(iconPath),
+            SizedBox(width: 12.w),
             Text(
               itemText,
               style: Theme.of(context).primaryTextTheme.titleMedium?.copyWith(

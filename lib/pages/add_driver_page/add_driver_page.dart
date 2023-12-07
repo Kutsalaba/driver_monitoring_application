@@ -12,9 +12,10 @@ class AddDriverPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.brightGrey,
-      ),
+          // backgroundColor: AppColors.brightGrey,
+          ),
       body: Center(child: Text('Add Drivers')),
+      drawer: CustomMenuDrawer(),
     );
   }
 }

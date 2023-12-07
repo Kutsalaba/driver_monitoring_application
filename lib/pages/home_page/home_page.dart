@@ -10,13 +10,14 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.brightGrey,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+            // backgroundColor: AppColors.brightGrey,
+            ),
+        body: Center(child: Text('HOME')),
+        drawer: CustomMenuDrawer(),
       ),
-      body: Center(child: Text('HOME')),
-      drawer: CustomMenuDrawer(),
     );
   }
 }
-
