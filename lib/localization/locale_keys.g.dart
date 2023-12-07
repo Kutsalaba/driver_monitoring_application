@@ -2,6 +2,7 @@
 
 abstract class  LocaleKeys {
   static const appName = 'appName';
+  static const startAppName = 'startAppName';
   static const termsOfUse = 'termsOfUse';
   static const privacyPolicy = 'privacyPolicy';
   static const exit = 'exit';

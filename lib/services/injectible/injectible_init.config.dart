@@ -11,9 +11,10 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
+import '../../pages/auth_page/cubit/sign_in_cubit.dart' as _i5;
 import '../../routes/app_router.dart' as _i3;
 import '../../styles/app_theme_data.dart' as _i4;
-import 'injectible_init.dart' as _i5;
+import 'injectible_init.dart' as _i6;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 _i1.GetIt $initGetIt(
@@ -29,7 +30,8 @@ _i1.GetIt $initGetIt(
   final registerModule = _$RegisterModule();
   gh.lazySingleton<_i3.AppRouter>(() => registerModule.appRouter);
   gh.lazySingleton<_i4.AppThemeData>(() => registerModule.appThemeData);
+  gh.factory<_i5.SignInCubit>(() => _i5.SignInCubit());
   return getIt;
 }
 
-class _$RegisterModule extends _i5.RegisterModule {}
+class _$RegisterModule extends _i6.RegisterModule {}

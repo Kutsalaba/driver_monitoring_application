@@ -14,15 +14,15 @@ class AppThemeData {
 
   AppThemeData._() {
     _appTheme = ThemeData(
-      fontFamily: GoogleFonts.rubik().fontFamily,
+      fontFamily: GoogleFonts.heebo().fontFamily,
       primaryTextTheme: TextTheme(
         titleLarge: TextStyle(
-          fontSize: 42.sp,
+          fontSize: 32.sp,
           fontWeight: FontWeight.w500,
         ),
         titleMedium: TextStyle(
-          fontSize: 20.sp,
-          fontWeight: FontWeight.w500,
+          fontSize: 24.sp,
+          fontWeight: FontWeight.w600,
         ),
         titleSmall: TextStyle(
           fontSize: 16.sp,
@@ -41,8 +41,8 @@ class AppThemeData {
           fontWeight: FontWeight.w600,
         ),
       ).apply(
-        bodyColor: AppColors.white,
-        displayColor: AppColors.white,
+        bodyColor: AppColors.contrastGrey,
+        displayColor: AppColors.contrastGrey,
       ),
     );
   }

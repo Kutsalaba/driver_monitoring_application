@@ -16,6 +16,7 @@ class CodegenLoader extends AssetLoader{
 
   static const Map<String,dynamic> en = {
   "appName": "Drivers Monitoring",
+  "startAppName": "MILITARY \nTRANSPORT \nSERVICE",
   "termsOfUse": "Terms of use",
   "privacyPolicy": "Privacy Policy",
   "exit": "Exit",
@@ -27,6 +28,7 @@ class CodegenLoader extends AssetLoader{
 };
 static const Map<String,dynamic> ua = {
   "appName": "Моніторинг водіїв",
+  "startAppName": "MILITARY \nTRANSPORT \nSERVICE",
   "termsOfUse": "Правила використання",
   "privacyPolicy": "Політика конфіденційності",
   "exit": "Вихід",
