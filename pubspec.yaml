@@ -19,6 +19,12 @@ dependencies:
   #  NAVIGATION
   auto_route: ^7.8.3
 
+  #  NETWORK
+  dio: ^5.4.0
+
+  # DB
+  postgres: ^3.0.2
+
   #  UTILS
   zwidget: ^0.0.2
   google_fonts: ^6.1.0

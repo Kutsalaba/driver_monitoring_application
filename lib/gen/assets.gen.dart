@@ -12,11 +12,30 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/car.svg
+  String get car => 'assets/icons/car.svg';
+
+  /// File path: assets/icons/driver.svg
+  String get driver => 'assets/icons/driver.svg';
+
+  /// File path: assets/icons/home.svg
+  String get home => 'assets/icons/home.svg';
+
   /// File path: assets/icons/location.svg
   String get location => 'assets/icons/location.svg';
 
+  /// File path: assets/icons/log_out.svg
+  String get logOut => 'assets/icons/log_out.svg';
+
+  /// File path: assets/icons/logo.svg
+  String get logo => 'assets/icons/logo.svg';
+
+  /// File path: assets/icons/support.svg
+  String get support => 'assets/icons/support.svg';
+
   /// List of all assets
-  List<String> get values => [location];
+  List<String> get values =>
+      [car, driver, home, location, logOut, logo, support];
 }
 
 class $AssetsLocalizationGen {
