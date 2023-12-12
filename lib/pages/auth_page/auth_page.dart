@@ -1,10 +1,17 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
+import 'package:driver_monitoring_application/routes/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../cubit/app_state.dart';
+import '../../cubit/app_state_cubit.dart';
 import '../../gen/assets.gen.dart';
 import '../../services/injectible/injectible_init.dart';
+import '../../services/secure_storage_service.dart';
 import '../../styles/app_colors.dart';
 import 'cubit/sign_in_cubit.dart';
 import 'widgets/email_field.dart';
@@ -23,14 +30,31 @@ class AuthPage extends StatelessWidget {
         child: Builder(
           builder: (context) {
             return BlocListener<SignInCubit, SignInState>(
-              listener: (context, state) {
-                // if (state is SignInSuccess) {
-                //   context.read<AppStateCubit>().checkAuthStatus();
-                // } else if (state is SignInError) {
-                //   ScaffoldMessenger.of(context).showSnackBar(
-                //     SnackBar(content: Text(state.errorText)),
-                //   );
-                // }
+              listener: (context, state) async {
+                if (state is SignInSuccess) {
+                  await context.read<AppStateCubit>().checkAuthStatus();
+                  if (context.mounted &&
+                      context.read<AppStateCubit>().state is AuthorizedState) {
+                    await getIt<SecureStorage>().writeSecureData(
+                      key: 'creds',
+                      value: jsonEncode(
+                          (context.read<AppStateCubit>().state as AuthorizedState)
+                              .user
+                              .toJson()),
+                    );
+                    AutoRouter.of(context).replace(const HomeRoute());
+                  } else if (context.mounted &&
+                      context.read<AppStateCubit>().state
+                          is UnauthorizedState) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Not correct login or password')),
+                    );
+                  }
+                } else if (state is SignInError) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(state.errorText)),
+                  );
+                }
               },
               child: SingleChildScrollView(
                 child: Padding(
@@ -53,7 +77,7 @@ class AuthPage extends StatelessWidget {
                         SizedBox(height: 40.h),
                         EmailField(
                           controller:
-                              context.read<SignInCubit>().emailController,
+                              context.read<SignInCubit>().loginController,
                         ),
                         SizedBox(height: 10.h),
                         PasswordField(
@@ -62,16 +86,17 @@ class AuthPage extends StatelessWidget {
                         ),
                         SizedBox(height: 30.h),
                         Material(
-                          color: Colors.white,
+                          color: AppColors.blue,
                           borderRadius: BorderRadius.circular(4.w),
                           child: InkWell(
                             onTap: () async {
-                              // final formState = context
-                              //     .read<SignInCubit>()
-                              //     .formKey
-                              //     .currentState;
+                              final formState = context
+                                  .read<SignInCubit>()
+                                  .formKey
+                                  .currentState;
+
                               // if (formState?.validate() ?? false) {
-                              //   await context.read<SignInCubit>().signIn();
+                              await context.read<SignInCubit>().signIn();
                               // }
                             },
                             borderRadius: BorderRadius.circular(4.w),
@@ -84,11 +109,9 @@ class AuthPage extends StatelessWidget {
                                   padding: EdgeInsets.symmetric(vertical: 15.h),
                                   child: Text(
                                     'Sign in',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600,
-                                      color: Theme.of(context).primaryColor,
-                                    ),
+                                    style: Theme.of(context)
+                                        .primaryTextTheme
+                                        .titleMedium,
                                   ),
                                 ),
                               ),

@@ -1,0 +1,79 @@
+import 'dart:developer';
+
+import 'package:dio/dio.dart';
+import 'package:driver_monitoring_application/domain/shared_models/api/user_model.dart';
+import 'package:postgres/postgres.dart';
+
+import '../domain/core/errors/failures.dart';
+
+class DbService {
+  // final Dio _dio = Dio();
+  late final Connection conn;
+  UserModel? currentUser;
+
+  Future<void> init() async {
+    conn = await Connection.open(
+      Endpoint(
+        host: '34.82.23.154',
+        database: 'prod_db',
+        username: 'postgres',
+        password: 'IvNa2023OlKh',
+      ),
+    );
+    // final result = await conn.execute("SELECT * FROM example_table");
+    // log(result[0][1].toString());
+  }
+
+  Future<UserModel> signInWithLoginAndPassword({
+    required String login,
+    required String password,
+  }) async {
+    try {
+      final result = await conn.execute("""
+      select * from users
+      where login = '$login' and user_password = '$password'
+    """);
+      if (result.isNotEmpty) {
+        var userModel = UserModel(
+          userId: int.parse(result.first[0].toString()),
+          login: result.first[1].toString(),
+          password: result.first[2].toString(),
+          chiefFlag: result.first[3].toString() == 'true',
+        );
+        log(userModel.toJson().toString());
+        currentUser = userModel;
+        return userModel;
+      }
+      return const UserModel();
+    } catch (exception) {
+      throw (OtherFailure(message: 'Failed to sign in $exception'));
+    }
+  }
+
+  Future<UserModel> getUserByLogin(String login) async {
+    try {
+      final result = await conn.execute("""
+      select * from users where login = '$login'
+      """);
+      if (result.isNotEmpty) {
+        var userModel = UserModel(
+          userId: int.parse(result.first[0].toString()),
+          login: result.first[1].toString(),
+          password: result.first[2].toString(),
+          chiefFlag: result.first[3].toString() == 'true',
+        );
+        log(userModel.toJson().toString());
+        currentUser = userModel;
+        return userModel;
+      }
+      return const UserModel();
+    } catch (exception) {
+      throw (OtherFailure(message: 'Failed to sign in $exception'));
+    }
+  }
+
+  Future<void> signOut() {
+    // TODO: implement signOut
+    throw UnimplementedError();
+  }
+}

@@ -3,6 +3,8 @@ import 'package:injectable/injectable.dart';
 
 import '../../../routes/app_router.dart';
 import '../../styles/app_theme_data.dart';
+import '../db_service.dart';
+import '../secure_storage_service.dart';
 import 'injectible_init.config.dart';
 
 final getIt = GetIt.instance;
@@ -21,4 +23,10 @@ abstract class RegisterModule {
 
   @lazySingleton
   AppThemeData get appThemeData => AppThemeData();
+
+  @lazySingleton
+  DbService get dbService => DbService();
+
+  @lazySingleton
+  SecureStorage get secureStorage => SecureStorage();
 }

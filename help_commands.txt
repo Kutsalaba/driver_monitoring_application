@@ -1,0 +1,17 @@
+# Help commands
+
+flutter clean
+
+flutter build apk --release --build-name 1.0.0 --build-number 1
+
+flutter build appbundle --release --build-name 1.0.0 --build-number 1
+
+
+dart run change_app_package_name:main com.aeroinsight.training
+
+dart run build_runner build --delete-conflicting-outputs
+
+
+dart run easy_localization:generate -S "assets/localization" -O "lib/localization"
+
+dart run easy_localization:generate -S "assets/localization" -O "lib/localization" -o "locale_keys.g.dart" -f keys
