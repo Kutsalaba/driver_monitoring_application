@@ -11,11 +11,12 @@
 import 'package:auto_route/auto_route.dart' as _i5;
 import 'package:driver_monitoring_application/pages/add_driver_page/add_driver_page.dart'
     as _i1;
-import 'package:driver_monitoring_application/pages/auth_page/auth_page.dart'
+import 'package:driver_monitoring_application/pages/auth_page/sign_in_page.dart'
     as _i2;
 import 'package:driver_monitoring_application/pages/home_page/home_page.dart'
     as _i3;
-import 'package:driver_monitoring_application/pages/splash_screen.dart' as _i4;
+import 'package:driver_monitoring_application/pages/splash/splash_page.dart'
+    as _i4;
 
 abstract class $AppRouter extends _i5.RootStackRouter {
   $AppRouter({super.navigatorKey});
@@ -31,7 +32,7 @@ abstract class $AppRouter extends _i5.RootStackRouter {
     AuthRoute.name: (routeData) {
       return _i5.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i2.AuthPage(),
+        child: const _i2.SignInPage(),
       );
     },
     HomeRoute.name: (routeData) {
@@ -43,7 +44,7 @@ abstract class $AppRouter extends _i5.RootStackRouter {
     SplashRoute.name: (routeData) {
       return _i5.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.SplashScreen(),
+        child: const _i4.SplashPage(),
       );
     },
   };
@@ -64,7 +65,7 @@ class AddDriverRoute extends _i5.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.AuthPage]
+/// [_i2.SignInPage]
 class AuthRoute extends _i5.PageRouteInfo<void> {
   const AuthRoute({List<_i5.PageRouteInfo>? children})
       : super(
@@ -92,7 +93,7 @@ class HomeRoute extends _i5.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.SplashScreen]
+/// [_i4.SplashPage]
 class SplashRoute extends _i5.PageRouteInfo<void> {
   const SplashRoute({List<_i5.PageRouteInfo>? children})
       : super(

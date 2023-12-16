@@ -14,6 +14,6 @@ abstract class AuthRepositoryI {
   //   required String login,
   //   required String password,
   // });
-  // Future<Either<Failure, void>> signOut();
+  Future<Either<Failure, void>> signOut();
   Future<Either<Failure, UserModel>> isUserSignedIn(String login);
 }

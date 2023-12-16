@@ -41,4 +41,14 @@ class AuthRepositoryImplementation implements AuthRepositoryI {
       return Left(ServerFailure(message: 'Something went wrong: $exception'));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> signOut() async {
+    try {
+      final result = await remoteDataSource.signOut();
+      return Right(result);
+    } on ServerFailure catch (exception) {
+      return Left(ServerFailure(message: 'Something went wrong: $exception'));
+    }
+  }
 }

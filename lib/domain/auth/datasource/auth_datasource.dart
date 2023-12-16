@@ -44,7 +44,7 @@ class AuthDataSourceImpl implements AuthDataSourceI {
   @override
   Future<void> signOut() async {
     try {
-      dbService.signOut();
+      await dbService.signOut();
     } catch (exception) {
       throw (ServerFailure(message: exception.toString()));
     }

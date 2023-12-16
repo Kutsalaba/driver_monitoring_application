@@ -12,40 +12,19 @@ import 'package:dio/dio.dart';
 import 'dart:io';
 import 'package:postgres/postgres.dart';
 
-import '../cubit/app_state.dart';
-import '../cubit/app_state_cubit.dart';
-import '../domain/shared_models/api/user_model.dart';
-import '../gen/assets.gen.dart';
-import '../routes/app_router.gr.dart';
-import '../services/injectible/injectible_init.dart';
-import '../services/secure_storage_service.dart';
-import '../styles/app_colors.dart';
+import '../../cubit/app_state.dart';
+import '../../cubit/app_state_cubit.dart';
+import '../../domain/shared_models/api/user_model.dart';
+import '../../gen/assets.gen.dart';
+import '../../routes/app_router.gr.dart';
+import '../../services/injectible/injectible_init.dart';
+import '../../services/secure_storage_service.dart';
+import '../../styles/app_colors.dart';
+import 'cubit/splash_cubit.dart';
 
 @RoutePage()
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
-
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  Future startAnimation(context) async {
-    await Future.delayed(const Duration(seconds: 3));
-    // await getIt<AppStateCubit>().checkUserLocalCreds();
-    // if (getIt<AppStateCubit>().state is AppStateCubit) {
-    //   AutoRouter.of(context).replace(const HomeRoute());
-    // }
-    // AutoRouter.of(context).replace(const AuthRoute());
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   startAnimation(context);
-    // });
-  }
+class SplashPage extends StatelessWidget {
+  const SplashPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,21 +32,20 @@ class _SplashScreenState extends State<SplashScreen> {
       child: Scaffold(
         backgroundColor: AppColors.contrastBlack,
         body: BlocProvider(
-          create: (context) => getIt<AppStateCubit>()..checkUserLocalCreds(),
+          create: (context) => getIt<SplashCubit>()..load(),
           child: Builder(builder: (context) {
-            return BlocListener<AppStateCubit, AppState>(
+            return BlocListener<SplashCubit, SplashPageState>(
               listener: (context, state) async {
-                if (state is SplashState) {
-                  await Future.delayed(const Duration(seconds: 3));
+                var route = AutoRouter.of(context);
+                if (state is ShowAuth) {
+                  var appStateCubit = context.read<AppStateCubit>();
+                  await appStateCubit.checkAuthStatus();
+                  if (appStateCubit.state is AuthorizedState) {
+                    route.replace(const HomeRoute());
+                  } else {
+                    route.replace(const AuthRoute());
+                  }
                 }
-                // await context.read<AppStateCubit>().checkUserLocalCreds();
-                if (context.mounted && state is AuthorizedState) {
-                  AutoRouter.of(context).replace(const HomeRoute());
-                }
-                else {
-                  AutoRouter.of(context).replace(const AuthRoute());
-                }
-                
               },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,

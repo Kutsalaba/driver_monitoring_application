@@ -2,9 +2,11 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:driver_monitoring_application/domain/shared_models/api/user_model.dart';
+import 'package:driver_monitoring_application/services/secure_storage_service.dart';
 import 'package:postgres/postgres.dart';
 
 import '../domain/core/errors/failures.dart';
+import 'injectible/injectible_init.dart';
 
 class DbService {
   // final Dio _dio = Dio();
@@ -20,8 +22,6 @@ class DbService {
         password: 'IvNa2023OlKh',
       ),
     );
-    // final result = await conn.execute("SELECT * FROM example_table");
-    // log(result[0][1].toString());
   }
 
   Future<UserModel> signInWithLoginAndPassword({
@@ -72,8 +72,7 @@ class DbService {
     }
   }
 
-  Future<void> signOut() {
-    // TODO: implement signOut
-    throw UnimplementedError();
+  Future<void> signOut() async {
+    await getIt<SecureStorage>().deleteSecureData('creds');
   }
 }

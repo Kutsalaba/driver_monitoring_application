@@ -43,23 +43,23 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(393, 786),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context, child) {
-        return MultiBlocProvider(
-          providers: [
-            BlocProvider.value(
-              value: appStateCubit,
-            ),
-            // BlocProvider(
-            //   create: (context) => getIt<AppInternalNotificationsBloc>(),
-            // ),
-          ],
-          child: BlocBuilder<AppStateCubit, AppState>(
-            bloc: appStateCubit,
-            builder: (context, state) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider.value(
+          value: appStateCubit,
+        ),
+        // BlocProvider(
+        //   create: (context) => getIt<AppInternalNotificationsBloc>(),
+        // ),
+      ],
+      child: BlocBuilder<AppStateCubit, AppState>(
+        bloc: appStateCubit,
+        builder: (context, state) {
+          return ScreenUtilInit(
+            designSize: const Size(393, 786),
+            minTextAdapt: true,
+            splitScreenMode: true,
+            builder: (context, child) {
               return MaterialApp.router(
                 debugShowCheckedModeBanner: false,
                 localizationsDelegates: context.localizationDelegates,
@@ -79,9 +79,9 @@ class MainApp extends StatelessWidget {
                 ),
               );
             },
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

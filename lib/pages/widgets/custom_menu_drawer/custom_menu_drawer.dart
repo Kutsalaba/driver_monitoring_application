@@ -2,11 +2,15 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:driver_monitoring_application/cubit/app_state.dart';
+import 'package:driver_monitoring_application/cubit/app_state_cubit.dart';
 import 'package:driver_monitoring_application/domain/shared_models/api/user_model.dart';
+import 'package:driver_monitoring_application/pages/auth_page/cubit/sign_in_cubit.dart';
 import 'package:driver_monitoring_application/services/secure_storage_service.dart';
 import 'package:driver_monitoring_application/styles/app_colors.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../gen/assets.gen.dart';
@@ -21,6 +25,9 @@ class CustomMenuDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var chiefFlag =
+        (context.read<AppStateCubit>().state as AuthorizedState).user.chiefFlag;
+    var signInCubit = getIt<SignInCubit>();
     return Drawer(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -47,22 +54,32 @@ class CustomMenuDrawer extends StatelessWidget {
                   AutoRouter.of(context).pop();
                 },
               ),
-              SizedBox(height: 26.h),
-              CustomMenuTile(
-                itemText: LocaleKeys.drivers.tr(),
-                iconPath: Assets.icons.driver,
-                onTap: () {
-                  AutoRouter.of(context).replace(const AddDriverRoute());
-                  AutoRouter.of(context).pop();
-                },
+              Visibility(
+                visible: chiefFlag!,
+                child: Padding(
+                  padding: EdgeInsets.only(top: 26.h),
+                  child: CustomMenuTile(
+                    itemText: LocaleKeys.drivers.tr(),
+                    iconPath: Assets.icons.driver,
+                    onTap: () {
+                      AutoRouter.of(context).replace(const AddDriverRoute());
+                      AutoRouter.of(context).pop();
+                    },
+                  ),
+                ),
               ),
-              SizedBox(height: 26.h),
-              CustomMenuTile(
-                itemText: LocaleKeys.cars.tr(),
-                iconPath: Assets.icons.car,
-                onTap: () {
-                  log('CARS');
-                },
+              Visibility(
+                visible: chiefFlag,
+                child: Padding(
+                  padding: EdgeInsets.only(top: 26.h),
+                  child: CustomMenuTile(
+                    itemText: LocaleKeys.cars.tr(),
+                    iconPath: Assets.icons.car,
+                    onTap: () {
+                      log('CARS');
+                    },
+                  ),
+                ),
               ),
               SizedBox(height: 26.h),
               CustomMenuTile(
@@ -77,8 +94,9 @@ class CustomMenuDrawer extends StatelessWidget {
               CustomMenuTile(
                 itemText: LocaleKeys.logOut.tr(),
                 iconPath: Assets.icons.logOut,
-                onTap: () {
-                  log('LOGOUT');
+                onTap: () async {
+                  await signInCubit.signOut();
+                  AutoRouter.of(context).replace(const AuthRoute());
                 },
               ),
               SizedBox(height: 50.h)

@@ -18,8 +18,8 @@ import 'widgets/email_field.dart';
 import 'widgets/password_field.dart';
 
 @RoutePage()
-class AuthPage extends StatelessWidget {
-  const AuthPage({Key? key}) : super(key: key);
+class SignInPage extends StatelessWidget {
+  const SignInPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,23 +32,23 @@ class AuthPage extends StatelessWidget {
             return BlocListener<SignInCubit, SignInState>(
               listener: (context, state) async {
                 if (state is SignInSuccess) {
+                  var route = AutoRouter.of(context);
                   await context.read<AppStateCubit>().checkAuthStatus();
-                  if (context.mounted &&
-                      context.read<AppStateCubit>().state is AuthorizedState) {
-                    await getIt<SecureStorage>().writeSecureData(
-                      key: 'creds',
-                      value: jsonEncode(
-                          (context.read<AppStateCubit>().state as AuthorizedState)
-                              .user
-                              .toJson()),
-                    );
-                    AutoRouter.of(context).replace(const HomeRoute());
-                  } else if (context.mounted &&
-                      context.read<AppStateCubit>().state
-                          is UnauthorizedState) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Not correct login or password')),
-                    );
+                  if (context.mounted) {
+                    var appStateCubitState =
+                        context.read<AppStateCubit>().state;
+                    if (appStateCubitState is AuthorizedState) {
+                      await getIt<SecureStorage>().writeSecureData(
+                        key: 'creds',
+                        value: jsonEncode((appStateCubitState).user.toJson()),
+                      );
+                      route.replace(const HomeRoute());
+                    } else if (appStateCubitState is UnauthorizedState) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                            content: Text('Not correct login or password')),
+                      );
+                    }
                   }
                 } else if (state is SignInError) {
                   ScaffoldMessenger.of(context).showSnackBar(

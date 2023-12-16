@@ -19,7 +19,7 @@ class AppStateCubit extends Cubit<AppState> {
   AppStateCubit({
     required this.authRepository,
     required this.dbService,
-  }) : super(SplashState());
+  }) : super(const SplashState());
 
   Future<void> checkAuthStatus() async {
     final currentUser = dbService.currentUser;
@@ -28,29 +28,26 @@ class AppStateCubit extends Cubit<AppState> {
           await authRepository.isUserSignedIn(currentUser.login ?? '');
       result.fold(
         (failure) {
-          emit(UnauthorizedState());
+          emit(const UnauthorizedState());
         },
         (user) {
           emit(AuthorizedState(user: user));
         },
       );
     } else {
-      emit(UnauthorizedState());
+      var data = await getIt<SecureStorage>().readSecureData('creds');
+      if (data != null) {
+        var user = UserModel.fromJson(jsonDecode(data));
+        log(user.login.toString());
+        emit(AuthorizedState(user: user));
+      } else {
+        emit(const UnauthorizedState());
+      }
     }
   }
 
   void logOut() async {
     await dbService.signOut();
-    checkAuthStatus();
-  }
-
-  Future<void> checkUserLocalCreds() async {
-    await Future.delayed(const Duration(seconds: 3));
-    var data = await getIt<SecureStorage>().readSecureData('creds');
-    if (data != null) {
-      var user = UserModel.fromJson(jsonDecode(data));
-      log(user.login.toString());
-      emit(AuthorizedState(user: user));
-    }
+    await checkAuthStatus();
   }
 }

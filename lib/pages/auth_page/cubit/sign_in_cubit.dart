@@ -35,4 +35,16 @@ class SignInCubit extends Cubit<SignInState> {
       },
     );
   }
+
+  Future<void> signOut() async {
+    final result = await repository.signOut();
+    result.fold(
+      (failure) {
+        emit(SignInError(failure.message));
+      },
+      (result) {
+        emit(SignInSuccess());
+      },
+    );
+  }
 }
