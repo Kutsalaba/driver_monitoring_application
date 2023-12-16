@@ -37,8 +37,20 @@ class AppThemeData {
           fontWeight: FontWeight.w700,
         ),
         displaySmall: TextStyle(
-          fontSize: 22.sp,
+          fontSize: 18.sp,
+          fontWeight: FontWeight.w400,
+        ),
+        bodyLarge: TextStyle(
+          fontSize: 12.sp,
           fontWeight: FontWeight.w600,
+        ),
+        bodyMedium: TextStyle(
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w900,
+        ),
+        bodySmall: TextStyle(
+          fontSize: 12.sp,
+          fontWeight: FontWeight.w300,
         ),
       ).apply(
         bodyColor: AppColors.contrastGrey,

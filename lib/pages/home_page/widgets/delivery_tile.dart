@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AddDriverPage extends StatelessWidget {
-  const AddDriverPage({super.key});
+class DeliveryTile extends StatelessWidget {
+  const DeliveryTile({super.key});
 
   @override
   Widget build(BuildContext context) {

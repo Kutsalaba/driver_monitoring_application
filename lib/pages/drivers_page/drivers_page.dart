@@ -1,20 +1,20 @@
 import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:driver_monitoring_application/cubit/app_state.dart';
-import 'package:driver_monitoring_application/cubit/app_state_cubit.dart';
-import 'package:driver_monitoring_application/localization/locale_keys.g.dart';
-import 'package:driver_monitoring_application/services/injectible/injectible_init.dart';
-import 'package:driver_monitoring_application/styles/app_colors.dart';
+import 'package:driver_monitoring_application/gen/assets.gen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../localization/locale_keys.g.dart';
+import '../../styles/app_colors.dart';
 import '../widgets/custom_menu_drawer/custom_menu_drawer.dart';
+import 'widgets/driver_tile.dart';
 
 @RoutePage()
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class DriversPage extends StatelessWidget {
+  const DriversPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
           size: 32.w,
         ),
         title: Text(
-          LocaleKeys.home.tr(),
+          LocaleKeys.drivers.tr(),
           style: Theme.of(context).primaryTextTheme.titleLarge,
         ),
         centerTitle: true,
@@ -38,11 +38,11 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.h),
+              padding: EdgeInsets.only(top: 20.h, bottom: 2.h),
               child: Row(
                 children: [
                   Text(
-                    'Deliveries:',
+                    LocaleKeys.drivers.tr(),
                     style: Theme.of(context)
                         .primaryTextTheme
                         .titleMedium
@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
                           fontWeight: FontWeight.w300,
                         ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Switch.adaptive(
                     value: true,
                     onChanged: (newValue) {
@@ -60,6 +60,23 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.deepGrey,
+                shape: const CircleBorder(),
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(12.w),
+                child: SvgPicture.asset(
+                  Assets.icons.circlePlus,
+                  width: 32.w,
+                  height: 32.h,
+                ),
+              ),
+            ),
+            SizedBox(height: 20.h),
+            DriverTile(),
           ],
         ),
       ),

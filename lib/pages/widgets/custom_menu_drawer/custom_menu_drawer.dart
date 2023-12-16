@@ -62,7 +62,7 @@ class CustomMenuDrawer extends StatelessWidget {
                     itemText: LocaleKeys.drivers.tr(),
                     iconPath: Assets.icons.driver,
                     onTap: () {
-                      AutoRouter.of(context).replace(const AddDriverRoute());
+                      AutoRouter.of(context).replace(const DriversRoute());
                       AutoRouter.of(context).pop();
                     },
                   ),
@@ -96,7 +96,7 @@ class CustomMenuDrawer extends StatelessWidget {
                 iconPath: Assets.icons.logOut,
                 onTap: () async {
                   await signInCubit.signOut();
-                  AutoRouter.of(context).replace(const AuthRoute());
+                  AutoRouter.of(context).replace(const SignInRoute());
                 },
               ),
               SizedBox(height: 50.h)

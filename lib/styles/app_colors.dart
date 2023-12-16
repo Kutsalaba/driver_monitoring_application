@@ -13,6 +13,8 @@ class AppColors {
   static const contrastGrey = Color(0xffe3e5e5);
   static const contrastRed = Color(0xffd61135);
 
+  static const deepGrey = Color(0xff1C1C1D);
+
 
   static const blue = Color(0xFF2196F3);
   static const white = Color(0xffFFFFFF);

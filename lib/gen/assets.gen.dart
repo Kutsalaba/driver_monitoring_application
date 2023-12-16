@@ -15,6 +15,12 @@ class $AssetsIconsGen {
   /// File path: assets/icons/car.svg
   String get car => 'assets/icons/car.svg';
 
+  /// File path: assets/icons/circle_plus.svg
+  String get circlePlus => 'assets/icons/circle_plus.svg';
+
+  /// File path: assets/icons/close_red.svg
+  String get closeRed => 'assets/icons/close_red.svg';
+
   /// File path: assets/icons/driver.svg
   String get driver => 'assets/icons/driver.svg';
 
@@ -24,11 +30,25 @@ class $AssetsIconsGen {
   /// File path: assets/icons/home.svg
   String get home => 'assets/icons/home.svg';
 
+  /// File path: assets/icons/location.svg
+  String get location => 'assets/icons/location.svg';
+
   /// File path: assets/icons/log_out.svg
   String get logOut => 'assets/icons/log_out.svg';
 
   /// List of all assets
-  List<String> get values => [car, driver, help, home, logOut];
+  List<String> get values =>
+      [car, circlePlus, closeRed, driver, help, home, location, logOut];
+}
+
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  /// File path: assets/images/test.jpg
+  AssetGenImage get test => const AssetGenImage('assets/images/test.jpg');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [test];
 }
 
 class $AssetsLocalizationGen {
@@ -48,6 +68,7 @@ class Assets {
   Assets._();
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsLocalizationGen localization = $AssetsLocalizationGen();
   static const AssetGenImage logo = AssetGenImage('assets/logo.png');
 

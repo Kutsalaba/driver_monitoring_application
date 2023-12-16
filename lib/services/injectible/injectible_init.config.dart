@@ -11,17 +11,18 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../../cubit/app_state_cubit.dart' as _i12;
+import '../../cubit/app_state_cubit.dart' as _i13;
 import '../../domain/auth/datasource/auth_datasource.dart' as _i8;
 import '../../domain/auth/repository/auth_repo.dart' as _i9;
 import '../../domain/auth/repository/auth_repo_impl.dart' as _i10;
-import '../../pages/auth_page/cubit/sign_in_cubit.dart' as _i11;
+import '../../pages/auth_page/cubit/sign_in_cubit.dart' as _i12;
 import '../../pages/splash/cubit/splash_cubit.dart' as _i7;
 import '../../routes/app_router.dart' as _i3;
 import '../../styles/app_theme_data.dart' as _i4;
+import '../db_drivers.dart' as _i11;
 import '../db_service.dart' as _i5;
 import '../secure_storage_service.dart' as _i6;
-import 'injectible_init.dart' as _i13;
+import 'injectible_init.dart' as _i14;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 _i1.GetIt $initGetIt(
@@ -44,13 +45,14 @@ _i1.GetIt $initGetIt(
       () => _i8.AuthDataSourceImpl(dbService: gh<_i5.DbService>()));
   gh.factory<_i9.AuthRepositoryI>(
       () => _i10.AuthRepositoryImplementation(gh<_i8.AuthDataSourceI>()));
-  gh.factory<_i11.SignInCubit>(
-      () => _i11.SignInCubit(gh<_i9.AuthRepositoryI>()));
-  gh.factory<_i12.AppStateCubit>(() => _i12.AppStateCubit(
+  gh.factory<_i11.DbDrivers>(() => _i11.DbDrivers(gh<_i5.DbService>()));
+  gh.factory<_i12.SignInCubit>(
+      () => _i12.SignInCubit(gh<_i9.AuthRepositoryI>()));
+  gh.factory<_i13.AppStateCubit>(() => _i13.AppStateCubit(
         authRepository: gh<_i9.AuthRepositoryI>(),
         dbService: gh<_i5.DbService>(),
       ));
   return getIt;
 }
 
-class _$RegisterModule extends _i13.RegisterModule {}
+class _$RegisterModule extends _i14.RegisterModule {}

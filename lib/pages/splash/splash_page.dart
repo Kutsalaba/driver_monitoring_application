@@ -43,7 +43,7 @@ class SplashPage extends StatelessWidget {
                   if (appStateCubit.state is AuthorizedState) {
                     route.replace(const HomeRoute());
                   } else {
-                    route.replace(const AuthRoute());
+                    route.replace(const SignInRoute());
                   }
                 }
               },
