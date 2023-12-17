@@ -24,9 +24,6 @@ class $AssetsIconsGen {
   /// File path: assets/icons/driver.svg
   String get driver => 'assets/icons/driver.svg';
 
-  /// File path: assets/icons/help.svg
-  String get help => 'assets/icons/help.svg';
-
   /// File path: assets/icons/home.svg
   String get home => 'assets/icons/home.svg';
 
@@ -42,6 +39,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/success.svg
   String get success => 'assets/icons/success.svg';
 
+  /// File path: assets/icons/support.svg
+  String get support => 'assets/icons/support.svg';
+
   /// File path: assets/icons/warning.svg
   String get warning => 'assets/icons/warning.svg';
 
@@ -51,12 +51,12 @@ class $AssetsIconsGen {
         circlePlus,
         closeRed,
         driver,
-        help,
         home,
         location,
         logOut,
         pictureAdd,
         success,
+        support,
         warning
       ];
 }

@@ -91,12 +91,14 @@ class DriversPage extends StatelessWidget {
                     ),
                   );
                 }
-                return SizedBox(
-                  height: 30.h,
-                  width: 30.w,
-                  child: const Center(
-                    child: CircularProgressIndicator(
-                      color: AppColors.white,
+                return Center(
+                  child: SizedBox(
+                    height: 30.h,
+                    width: 30.w,
+                    child: const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.white,
+                      ),
                     ),
                   ),
                 );

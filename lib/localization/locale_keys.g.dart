@@ -8,8 +8,8 @@ abstract class  LocaleKeys {
   static const exit = 'exit';
   static const orders = 'orders';
   static const drivers = 'drivers';
-  static const cars = 'cars';
-  static const help = 'help';
+  static const vehicles = 'vehicles';
+  static const support = 'support';
   static const logOut = 'logOut';
   static const fieldsCannotBeEmpty = 'fieldsCannotBeEmpty';
   static const addDriver = 'addDriver';

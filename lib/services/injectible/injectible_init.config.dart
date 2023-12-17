@@ -17,7 +17,7 @@ import '../../domain/auth/repository/auth_repo.dart' as _i11;
 import '../../domain/auth/repository/auth_repo_impl.dart' as _i12;
 import '../../pages/add_driver_page/cubit/add_driver_cubit.dart' as _i3;
 import '../../pages/sign_in_page/cubit/sign_in_cubit.dart' as _i13;
-import '../../pages/splash/cubit/splash_cubit.dart' as _i9;
+import '../../pages/splash_page/cubit/splash_cubit.dart' as _i9;
 import '../../routes/app_router.dart' as _i4;
 import '../../styles/app_theme_data.dart' as _i5;
 import '../db_drivers.dart' as _i6;

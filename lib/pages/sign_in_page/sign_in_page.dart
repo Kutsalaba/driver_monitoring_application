@@ -98,10 +98,10 @@ class SignInPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(4.w),
                           child: InkWell(
                             onTap: () async {
-                              final formState = context
-                                  .read<SignInCubit>()
-                                  .formKey
-                                  .currentState;
+                              // final formState = context
+                              //     .read<SignInCubit>()
+                              //     .formKey
+                              //     .currentState;
 
                               // if (formState?.validate() ?? false) {
                               await context.read<SignInCubit>().signIn();

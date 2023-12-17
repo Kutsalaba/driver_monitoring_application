@@ -69,7 +69,7 @@ class CustomMenuDrawer extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.only(top: 26.h),
                   child: CustomMenuTile(
-                    itemText: LocaleKeys.cars.tr(),
+                    itemText: LocaleKeys.vehicles.tr(),
                     iconPath: Assets.icons.car,
                     onTap: () {
                       log('CARS');
@@ -79,8 +79,8 @@ class CustomMenuDrawer extends StatelessWidget {
               ),
               SizedBox(height: 26.h),
               CustomMenuTile(
-                itemText: LocaleKeys.help.tr(),
-                iconPath: Assets.icons.help,
+                itemText: LocaleKeys.support.tr(),
+                iconPath: Assets.icons.support,
                 onTap: () {
                   log('HELP');
                 },
