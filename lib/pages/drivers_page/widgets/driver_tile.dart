@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../utils/helpers.dart';
 import 'driver_info_dialog.dart';
 
 class DriverTile extends StatelessWidget {
@@ -99,7 +100,7 @@ class DriverTile extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                driver.driverAge.toString(),
+                                'Age: ${driver.driverAge.toString()}',
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .bodySmall,
@@ -120,13 +121,13 @@ class DriverTile extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Category: B, C1, D1',
+                                'Category: ${getStringCategories(driver)}',
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .bodySmall,
                               ),
                               Text(
-                                'Departyres: 12',
+                                'Status: ${driver.currentStatus}',
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .bodySmall,

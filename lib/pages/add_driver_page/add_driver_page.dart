@@ -1,8 +1,10 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:driver_monitoring_application/gen/assets.gen.dart';
 import 'package:driver_monitoring_application/pages/add_driver_page/cubit/add_driver_cubit.dart';
+import 'package:driver_monitoring_application/routes/app_router.gr.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -65,10 +67,10 @@ class _AddDriverPageState extends State<AddDriverPage> {
                         ),
                         child: Center(
                           child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: 40.h),
+                            padding: EdgeInsets.symmetric(vertical: 32.h),
                             child: SvgPicture.asset(
                               Assets.icons.pictureAdd,
-                              width: 56.w,
+                              width: 52.w,
                             ),
                           ),
                         ),
@@ -91,20 +93,113 @@ class _AddDriverPageState extends State<AddDriverPage> {
                       ),
                     ),
                     SizedBox(height: 10.h),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 6.h),
-                      child: Text(
-                        'MILITARY RANK',
-                        textAlign: TextAlign.start,
-                        style: Theme.of(context).primaryTextTheme.displaySmall,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          width: 230.w,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(vertical: 6.h),
+                                child: Text(
+                                  'MILITARY RANK',
+                                  textAlign: TextAlign.start,
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .displaySmall,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 50.h,
+                                child: CustomTextField(
+                                  controller: addDriverCubit.rankController,
+                                  hintText: 'Enter a rank',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 6.h),
+                              child: Text(
+                                'AGE',
+                                textAlign: TextAlign.start,
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .displaySmall,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 50.h,
+                              width: 50.w,
+                              child: CustomTextField(
+                                controller: addDriverCubit.ageController,
+                                hintText: '  0',
+                                keyboardType: TextInputType.number,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                    SizedBox(
-                      height: 50.h,
-                      child: CustomTextField(
-                        controller: addDriverCubit.rankController,
-                        hintText: 'Enter a rank',
-                      ),
+                    SizedBox(height: 10.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          width: 140.w,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(vertical: 6.h),
+                                child: Text(
+                                  'LOGIN',
+                                  textAlign: TextAlign.start,
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .displaySmall,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 50.h,
+                                child: CustomTextField(
+                                  controller: addDriverCubit.loginController,
+                                  hintText: 'Enter',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        // SizedBox(width: 32.w),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 6.h),
+                              child: Text(
+                                'PASSWORD',
+                                textAlign: TextAlign.start,
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .displaySmall,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 50.h,
+                              width: 140.w,
+                              child: CustomTextField(
+                                controller: addDriverCubit.passwordController,
+                                hintText: 'Enter',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                     SizedBox(height: 10.h),
                     Padding(
@@ -138,40 +233,40 @@ class _AddDriverPageState extends State<AddDriverPage> {
                             ),
                           )
                           .toList(),
-                      // [
-                      //   CategoryItem(
-                      //     name: 'A',
-                      //     isSelected: true,
-                      //     onPressed: () {
-                      //       log('Press');
-                      //     },
-                      //   ),
-                      // ],
                     ),
-                    SizedBox(height: 10.h),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 6.h),
-                      child: Text(
-                        'AGE',
-                        textAlign: TextAlign.start,
-                        style: Theme.of(context).primaryTextTheme.displaySmall,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 50.h,
-                      width: 50.w,
-                      child: CustomTextField(
-                        controller: addDriverCubit.ageController,
-                        hintText: '  0',
-                      ),
-                    ),
-                    SizedBox(height: 10.h),
+                    SizedBox(height: 20.h),
                     Center(
                       child: SizedBox(
                         width: 300.w,
                         child: ElevatedButton(
-                          onPressed: () {
-                            context.read<AddDriverCubit>().confirmInput();
+                          onPressed: () async {
+                            var route = AutoRouter.of(context);
+                            if (context.read<AddDriverCubit>().confirmInput()) {
+                              await context.read<AddDriverCubit>().addDriver();
+                              if (context.mounted) {
+                                Timer? timer =
+                                    Timer(Duration(milliseconds: 1500), () {
+                                  route.popAndPush(const DriversRoute());
+                                  // route.replace(const AddDriverRoute());
+                                });
+                                await showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return Center(
+                                      child: Dialog(
+                                        child: Text(
+                                            'The driver was successfully added!'),
+                                      ),
+                                    );
+                                  },
+                                ).then((value) {
+                                  timer?.cancel();
+                                  timer = null;
+                                });
+                              }
+                            } else {
+                              showAboutDialog(context: context);
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: state.isInputCompleted

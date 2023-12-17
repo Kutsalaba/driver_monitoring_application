@@ -27,4 +27,15 @@ class DbDrivers {
       throw Exception(e);
     }
   }
+
+  Future<void> addDriver(DriverModel driver) async {
+    try {
+      await _dio.post(
+        '${UrlConstants.baseUrl}/driver',
+        data: driver.toJson(),
+      );
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
 }

@@ -10,14 +10,17 @@ class CustomTextField extends StatelessWidget {
     Key? key,
     required this.controller,
     required this.hintText,
+    this.keyboardType,
   }) : super(key: key);
 
   final String hintText;
   final TextEditingController controller;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: keyboardType,
       controller: controller,
       cursorColor: AppColors.glazyBlue,
       style: Theme.of(context).primaryTextTheme.displaySmall,

@@ -80,34 +80,34 @@ class DriversPage extends StatelessWidget {
                 ),
               ),
             ),
-            FutureBuilder(
-              future: getIt<DbDrivers>().fetchAllDrivers(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Column(
-                    children: snapshot.requireData
-                        .map(
-                          (driver) => Padding(
-                            padding: EdgeInsets.only(top: 20.h),
-                            child: DriverTile(
-                              driver: driver,
-                            ),
-                          ),
-                        )
-                        .toList(),
-                  );
-                }
-                return SizedBox(
-                  height: 30.h,
-                  width: 30.w,
-                  child: const Center(
-                    child: CircularProgressIndicator(
-                      color: AppColors.white,
-                    ),
-                  ),
-                );
-              },
-            ),
+            // FutureBuilder(
+            //   future: getIt<DbDrivers>().fetchAllDrivers(),
+            //   builder: (context, snapshot) {
+            //     if (snapshot.hasData) {
+            //       return Column(
+            //         children: snapshot.requireData
+            //             .map(
+            //               (driver) => Padding(
+            //                 padding: EdgeInsets.only(top: 20.h),
+            //                 child: DriverTile(
+            //                   driver: driver,
+            //                 ),
+            //               ),
+            //             )
+            //             .toList(),
+            //       );
+            //     }
+            //     return SizedBox(
+            //       height: 30.h,
+            //       width: 30.w,
+            //       child: const Center(
+            //         child: CircularProgressIndicator(
+            //           color: AppColors.white,
+            //         ),
+            //       ),
+            //     );
+            //   },
+            // ),
           ],
         ),
       ),

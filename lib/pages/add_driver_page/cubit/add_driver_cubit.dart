@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:driver_monitoring_application/pages/add_driver_page/models/license_category.dart';
+import 'package:driver_monitoring_application/services/db_drivers.dart';
+import 'package:driver_monitoring_application/services/injectible/injectible_init.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -16,6 +18,8 @@ class AddDriverCubit extends Cubit<AddDriverState> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController rankController = TextEditingController();
   final TextEditingController ageController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController loginController = TextEditingController();
   String phoneNumber = '';
 
   void load() {
@@ -47,23 +51,108 @@ class AddDriverCubit extends Cubit<AddDriverState> {
     emit(state.copyWith());
   }
 
-  void confirmInput() {
+  bool confirmInput() {
     if (nameController.text.isNotEmpty &&
         rankController.text.isNotEmpty &&
         ageController.text.isNotEmpty &&
-        phoneNumber.isNotEmpty) {
-          // state.licenseCategories.
-      var selectedLicenses = state.licenseCategories.map<String?>((category) {
-        if (category.isSelected) {
-          return category.name;
-        }
-        return null;
-      }).toList();
-      log(selectedLicenses.toString());
-      log(nameController.text);
-      log(rankController.text);
-      log(ageController.text);
-      log(phoneNumber);
+        phoneNumber.isNotEmpty &&
+        loginController.text.isNotEmpty &&
+        passwordController.text.isNotEmpty) {
+      // state.licenseCategories.
+
+      // log(nameController.text);
+      // log(rankController.text);
+      // log(ageController.text);
+      // log(loginController.text);
+      // log(passwordController.text);
+      // log(phoneNumber);
+      return true;
     }
+    return false;
+  }
+
+  Future<void> addDriver() async {
+    var selectedLicenses = state.licenseCategories
+        .where((category) => category.isSelected)
+        .map((category) => category.name)
+        .toList();
+    log(selectedLicenses.join(',').toString());
+    var names = nameController.text.split(' ');
+    var newDriver = DriverModel(
+      driverFirstName: names.first,
+      driverLastName: names.length > 1 ? names[1] : 'null',
+      driverPatronymic: names.length > 2 ? names[2] : 'null',
+      driverAge: int.parse(ageController.text),
+      driverRank: rankController.text,
+      mobilePhone: phoneNumber,
+      login: loginController.text,
+      password: passwordController.text,
+    );
+
+    newDriver = _addCategoriesToDriver(newDriver);
+    log(newDriver.toJson().toString());
+    await getIt<DbDrivers>().addDriver(newDriver);
+  }
+
+  DriverModel _addCategoriesToDriver(DriverModel driver) {
+    DriverModel driverWithCategories = driver;
+    for (var category in state.licenseCategories) {
+      switch (category.name) {
+        case 'A1':
+          driverWithCategories =
+              driverWithCategories.copyWith(a1Category: category.isSelected);
+          break;
+        case 'A':
+          driverWithCategories =
+              driverWithCategories.copyWith(aCategory: category.isSelected);
+          break;
+        case 'B1':
+          driverWithCategories =
+              driverWithCategories.copyWith(b1Category: category.isSelected);
+          break;
+        case 'B':
+          driverWithCategories =
+              driverWithCategories.copyWith(bCategory: category.isSelected);
+          break;
+        case 'C1':
+          driverWithCategories =
+              driverWithCategories.copyWith(c1Category: category.isSelected);
+          break;
+        case 'C':
+          driverWithCategories =
+              driverWithCategories.copyWith(cCategoty: category.isSelected);
+          break;
+        case 'D1':
+          driverWithCategories =
+              driverWithCategories.copyWith(d1Categoty: category.isSelected);
+          break;
+        case 'D':
+          driverWithCategories =
+              driverWithCategories.copyWith(dCategory: category.isSelected);
+          break;
+        case 'C1E':
+          driverWithCategories =
+              driverWithCategories.copyWith(c1eCategory: category.isSelected);
+          break;
+        case 'BE':
+          driverWithCategories =
+              driverWithCategories.copyWith(beCategory: category.isSelected);
+          break;
+        case 'CE':
+          driverWithCategories =
+              driverWithCategories.copyWith(ceCategory: category.isSelected);
+          break;
+        case 'D1E':
+          driverWithCategories =
+              driverWithCategories.copyWith(d1eCategory: category.isSelected);
+          break;
+        case 'DE':
+          driverWithCategories =
+              driverWithCategories.copyWith(deCategory: category.isSelected);
+          break;
+        default:
+      }
+    }
+    return driverWithCategories;
   }
 }
