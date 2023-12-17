@@ -1,18 +1,18 @@
+import 'package:driver_monitoring_application/models/driver_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../services/injectible/injectible_init.dart';
 import '../../../styles/app_colors.dart';
 
 class DriverInfoDialog extends StatelessWidget {
   const DriverInfoDialog({
     super.key,
     required this.imagePath,
-    required this.name,
+    required this.driverModel,
   });
 
   final String imagePath;
-  final String name;
+  final DriverModel driverModel;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class DriverInfoDialog extends StatelessWidget {
                 height: 55.h,
               ),
               Text(
-                name,
+                driverModel.driverFirstName,
                 style: Theme.of(context).primaryTextTheme.titleLarge,
               ),
               SizedBox(

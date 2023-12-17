@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:driver_monitoring_application/cubit/app_state_cubit.dart';
 import 'package:driver_monitoring_application/gen/assets.gen.dart';
 import 'package:driver_monitoring_application/pages/add_driver_page/cubit/add_driver_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -13,8 +12,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../localization/locale_keys.g.dart';
 import '../../services/injectible/injectible_init.dart';
 import '../../styles/app_colors.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
-import '../widgets/custom_menu_drawer/custom_menu_drawer.dart';
 import '../widgets/custom_text_field.dart';
 import 'widgets/category_item.dart';
 import 'widgets/phone_text_field.dart';
@@ -173,17 +170,27 @@ class _AddDriverPageState extends State<AddDriverPage> {
                       child: SizedBox(
                         width: 300.w,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            context.read<AddDriverCubit>().confirmInput();
+                          },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.glazyBlue,
+                            backgroundColor: state.isInputCompleted
+                                ? AppColors.glazyBlue
+                                : AppColors.contrastGrey,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12.w),
                             ),
                           ),
                           child: Text(
                             'CONFIRM',
-                            style:
-                                Theme.of(context).primaryTextTheme.titleMedium,
+                            style: Theme.of(context)
+                                .primaryTextTheme
+                                .titleMedium!
+                                .copyWith(
+                                  color: state.isInputCompleted
+                                      ? AppColors.white
+                                      : AppColors.deepGrey,
+                                ),
                           ),
                         ),
                       ),

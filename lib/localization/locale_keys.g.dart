@@ -11,5 +11,6 @@ abstract class  LocaleKeys {
   static const cars = 'cars';
   static const help = 'help';
   static const logOut = 'logOut';
+  static const fieldNotBeEmpty = 'fieldNotBeEmpty';
 
 }

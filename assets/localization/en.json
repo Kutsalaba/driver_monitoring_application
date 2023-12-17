@@ -8,5 +8,6 @@
     "drivers": "DRIVERS",
     "cars": "CARS",
     "help": "HELP",
-    "logOut": "LOGOUT"
+    "logOut": "LOGOUT",
+    "fieldNotBeEmpty": "Field must not be empty"
 }

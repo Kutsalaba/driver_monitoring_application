@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:driver_monitoring_application/gen/assets.gen.dart';
+import 'package:driver_monitoring_application/models/driver_model.dart';
 import 'package:driver_monitoring_application/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,7 +10,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'driver_info_dialog.dart';
 
 class DriverTile extends StatelessWidget {
-  const DriverTile({super.key});
+  const DriverTile({
+    super.key,
+    required this.driver,
+  });
+
+  final DriverModel driver;
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +26,13 @@ class DriverTile extends StatelessWidget {
           return Center(
             child: DriverInfoDialog(
               imagePath: Assets.images.test.path,
-              name: 'Поки текст',
+              driverModel: driver,
             ),
           );
         },
       ),
       child: Container(
-        height: 90.h,
+        height: 100.h,
         decoration: BoxDecoration(
           color: AppColors.deepGrey,
           borderRadius: BorderRadius.circular(18.w),
@@ -58,7 +64,7 @@ class DriverTile extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          'Kyrylo Budanov',
+                          '${driver.driverFirstName} ${driver.driverLastName} ${driver.driverPatronymic}',
                           style: Theme.of(context)
                               .primaryTextTheme
                               .bodyMedium!
@@ -87,35 +93,46 @@ class DriverTile extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Age: 37',
-                              style:
-                                  Theme.of(context).primaryTextTheme.bodySmall,
-                            ),
-                            Text(
-                              'Rank: Letin',
-                              style:
-                                  Theme.of(context).primaryTextTheme.bodySmall,
-                            ),
-                          ],
+                        SizedBox(
+                          width: 120.w,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                driver.driverAge.toString(),
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodySmall,
+                              ),
+                              Text(
+                                'Rank: ${driver.driverRank}',
+                                maxLines: 2,
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodySmall,
+                              ),
+                            ],
+                          ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Category: B, C1, D1',
-                              style:
-                                  Theme.of(context).primaryTextTheme.bodySmall,
-                            ),
-                            Text(
-                              'Departyres: 12',
-                              style:
-                                  Theme.of(context).primaryTextTheme.bodySmall,
-                            ),
-                          ],
+                        SizedBox(
+                          width: 120.w,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Category: B, C1, D1',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodySmall,
+                              ),
+                              Text(
+                                'Departyres: 12',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .bodySmall,
+                              ),
+                            ],
+                          ),
                         ),
                         SizedBox()
                       ],

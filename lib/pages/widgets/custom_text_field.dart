@@ -1,6 +1,9 @@
 import 'package:driver_monitoring_application/styles/app_colors.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../localization/locale_keys.g.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -28,7 +31,7 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(20.w),
         ),
         errorStyle: const TextStyle(
-          color: AppColors.glazyBlue,
+          color: AppColors.contrastRed,
           fontWeight: FontWeight.w500,
         ),
         focusedErrorBorder: OutlineInputBorder(
@@ -40,7 +43,7 @@ class CustomTextField extends StatelessWidget {
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(16.w)),
           borderSide: const BorderSide(
-            color: AppColors.glazyBlue,
+            color: AppColors.contrastRed,
           ),
         ),
         enabledBorder: OutlineInputBorder(
@@ -58,7 +61,7 @@ class CustomTextField extends StatelessWidget {
         ),
       ),
       validator: (input) {
-        if (input != null) {
+        if (input != null && input.isNotEmpty) {
           return input;
         }
         return null;

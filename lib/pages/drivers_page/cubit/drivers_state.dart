@@ -1,10 +1,8 @@
 part of 'drivers_cubit.dart';
 
-sealed class DriversState extends Equatable {
+class DriversState {
   const DriversState();
 
-  @override
-  List<Object> get props => [];
 }
 
-final class DriversInitial extends DriversState {}
+final class DriversLoad extends DriversState {}

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class DriverModel {
   final String userId;
   final String driverFirstName;
@@ -51,7 +49,7 @@ class DriverModel {
     required this.currentStatus,
   });
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'user_id': userId,
       'driver_first_name': driverFirstName,
@@ -79,45 +77,40 @@ class DriverModel {
     };
   }
 
-  factory DriverModel.fromMap(Map<String, dynamic> map) {
+  factory DriverModel.fromJson(Map<String, dynamic> json) {
     return DriverModel(
-      userId: map['user_id'] as String,
-      driverFirstName: map['driver_first_name'] as String,
-      driverLastName: map['driver_last_name'] as String,
-      driverPatronymic: map['driver_patronymic'] as String,
-      driverAge: map['driver_age'] as int,
-      driverRank: map['driver_rank'] as String,
-      mobilePhone: map['mobile_phone'] as String,
-      mail: map['mail'] != null ? map['mail'] as String : null,
-      aliveFlag: map['alive_flag'] as bool,
+      userId: json['user_id'] as String,
+      driverFirstName: json['driver_first_name'] as String,
+      driverLastName: json['driver_last_name'] as String,
+      driverPatronymic: json['driver_patronymic'] as String,
+      driverAge: json['driver_age'] as int,
+      driverRank: json['driver_rank'] as String,
+      mobilePhone: json['mobile_phone'] as String,
+      mail: json['mail'] != null ? json['mail'] as String : null,
+      aliveFlag: json['alive_flag'] as bool,
       a1Category:
-          map['a1_category'] != null ? map['a1_category'] as bool : null,
-      aCategory: map['a_category'] != null ? map['a_category'] as bool : null,
+          json['a1_category'] != null ? json['a1_category'] as bool : null,
+      aCategory: json['a_category'] != null ? json['a_category'] as bool : null,
       b1Category:
-          map['b1_category'] != null ? map['b1_category'] as bool : null,
-      bCategory: map['b_category'] != null ? map['b_category'] as bool : null,
+          json['b1_category'] != null ? json['b1_category'] as bool : null,
+      bCategory: json['b_category'] != null ? json['b_category'] as bool : null,
       c1Category:
-          map['c1_category'] != null ? map['c1_category'] as bool : null,
-      cCategoty: map['c_categoty'] != null ? map['c_categoty'] as bool : null,
+          json['c1_category'] != null ? json['c1_category'] as bool : null,
+      cCategoty: json['c_categoty'] != null ? json['c_categoty'] as bool : null,
       d1Categoty:
-          map['d1_categoty'] != null ? map['d1_categoty'] as bool : null,
-      dCategory: map['d_category'] != null ? map['d_category'] as bool : null,
+          json['d1_categoty'] != null ? json['d1_categoty'] as bool : null,
+      dCategory: json['d_category'] != null ? json['d_category'] as bool : null,
       c1ECategory:
-          map['c1e_category'] != null ? map['c1e_category'] as bool : null,
+          json['c1e_category'] != null ? json['c1e_category'] as bool : null,
       beCategory:
-          map['be_category'] != null ? map['be_category'] as bool : null,
+          json['be_category'] != null ? json['be_category'] as bool : null,
       ceCategory:
-          map['ce_category'] != null ? map['ce_category'] as bool : null,
+          json['ce_category'] != null ? json['ce_category'] as bool : null,
       d1ECategory:
-          map['d1e_category'] != null ? map['d1e_category'] as bool : null,
+          json['d1e_category'] != null ? json['d1e_category'] as bool : null,
       deCategory:
-          map['de_category'] != null ? map['de_category'] as bool : null,
-      currentStatus: map['current_status'] as String,
+          json['de_category'] != null ? json['de_category'] as bool : null,
+      currentStatus: json['current_status'] as String,
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory DriverModel.fromJson(String source) =>
-      DriverModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

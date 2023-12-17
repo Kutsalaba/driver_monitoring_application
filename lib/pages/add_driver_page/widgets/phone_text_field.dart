@@ -69,9 +69,7 @@ class PhoneTextField extends StatelessWidget {
       initialCountryCode: 'UA',
       languageCode: 'ua',
       onChanged: (phone) {
-        log(phone.completeNumber);
-
-        log(context.read<AddDriverCubit>().state.toString());
+        context.read<AddDriverCubit>().savePhoneNumber(phone.completeNumber);
       },
       onCountryChanged: (country) {
         print('Country changed to: ' + country.name);

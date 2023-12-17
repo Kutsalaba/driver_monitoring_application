@@ -24,7 +24,8 @@ class CodegenLoader extends AssetLoader{
   "drivers": "DRIVERS",
   "cars": "CARS",
   "help": "HELP",
-  "logOut": "LOGOUT"
+  "logOut": "LOGOUT",
+  "fieldNotBeEmpty": "Field must not be empty"
 };
 static const Map<String,dynamic> ua = {
   "appName": "Моніторинг водіїв",
@@ -36,7 +37,8 @@ static const Map<String,dynamic> ua = {
   "drivers": "DRIVERS",
   "cars": "CARS",
   "help": "HELP",
-  "logOut": "LOGOUT"
+  "logOut": "LOGOUT",
+  "fieldNotBeEmpty": "Field must not be empty"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "ua": ua};
 }
