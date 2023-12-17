@@ -4,9 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../styles/app_colors.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key, required this.title});
+  const CustomAppBar({
+    super.key,
+    required this.title,
+    this.bottom,
+  });
 
   final String title;
+  final PreferredSizeWidget? bottom;
 
   @override
   Size get preferredSize {
@@ -16,6 +21,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      toolbarHeight: 100.h,
       backgroundColor: AppColors.contrastBlack,
       iconTheme: IconThemeData(
         color: AppColors.contrastGrey,
@@ -26,6 +32,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         style: Theme.of(context).primaryTextTheme.titleLarge,
       ),
       centerTitle: true,
+      bottom: bottom,
     );
   }
 }

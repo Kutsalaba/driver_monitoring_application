@@ -19,8 +19,6 @@ class DbDrivers {
       var drivers = (jsonNew['drivers'] as List)
           .map<DriverModel>((driver) => DriverModel.fromJson(driver))
           .toList();
-      log(drivers.toString());
-      log(drivers.first.driverLastName.toString());
       return drivers;
       // }
     } catch (e) {

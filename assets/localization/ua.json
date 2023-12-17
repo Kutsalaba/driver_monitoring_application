@@ -11,5 +11,6 @@
     "logOut": "ВИХІД",
     "fieldsCannotBeEmpty": "Поля не можуть бути пустими!",
     "addDriver": "Додати водія",
+    "createDelivery": "Створити наказ",
     "notCorrectLoginOrPassword":"Не правильний логін або пароль"
 }

@@ -334,6 +334,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.3.2"
+  flutter_glow:
+    dependency: "direct main"
+    description:
+      name: flutter_glow
+      sha256: "158f041ddbc18f199dcfd9375d40b983a2bf887752598cdf7b41ac6ff36362bf"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -1162,14 +1170,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.2"
-  zwidget:
-    dependency: "direct main"
-    description:
-      name: zwidget
-      sha256: ad2ff074e24712e53bd912de9658acb076a1c9747b3c47612ca34636f44ac70f
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.2"
 sdks:
   dart: ">=3.2.0 <4.0.0"
   flutter: ">=3.16.0"

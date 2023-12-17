@@ -21,7 +21,7 @@ dependencies:
 
   #  UTILS
   dartz: ^0.10.1
-  zwidget: ^0.0.2
+  flutter_glow: ^0.3.0
   google_fonts: ^6.1.0
   url_launcher: ^6.1.14
   easy_localization: ^3.0.3

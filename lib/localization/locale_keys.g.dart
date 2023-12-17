@@ -13,6 +13,7 @@ abstract class  LocaleKeys {
   static const logOut = 'logOut';
   static const fieldsCannotBeEmpty = 'fieldsCannotBeEmpty';
   static const addDriver = 'addDriver';
+  static const createDelivery = 'createDelivery';
   static const notCorrectLoginOrPassword = 'notCorrectLoginOrPassword';
 
 }

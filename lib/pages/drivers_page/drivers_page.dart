@@ -75,33 +75,35 @@ class DriversPage extends StatelessWidget {
             FutureBuilder(
               future: getIt<DbDrivers>().fetchAllDrivers(),
               builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return SingleChildScrollView(
-                    child: Column(
-                      children: snapshot.requireData
-                          .map(
-                            (driver) => Padding(
-                              padding: EdgeInsets.only(top: 20.h),
-                              child: DriverTile(
-                                driver: driver,
-                              ),
+                return snapshot.hasData
+                    ? SingleChildScrollView(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.max,
+                          children: snapshot.requireData
+                              .map(
+                                (driver) => Padding(
+                                  padding: EdgeInsets.only(top: 20.h),
+                                  child: DriverTile(
+                                    driver: driver,
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                        ),
+                      )
+                    : Padding(
+                        padding: EdgeInsets.only(top: 200.h),
+                        child: SizedBox(
+                          height: 50.h,
+                          width: 50.w,
+                          child: const Center(
+                            child: CircularProgressIndicator(
+                              color: AppColors.white,
                             ),
-                          )
-                          .toList(),
-                    ),
-                  );
-                }
-                return Center(
-                  child: SizedBox(
-                    height: 30.h,
-                    width: 30.w,
-                    child: const Center(
-                      child: CircularProgressIndicator(
-                        color: AppColors.white,
-                      ),
-                    ),
-                  ),
-                );
+                          ),
+                        ),
+                      );
               },
             ),
           ],

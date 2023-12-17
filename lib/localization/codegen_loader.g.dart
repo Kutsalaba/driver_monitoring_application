@@ -26,7 +26,8 @@ class CodegenLoader extends AssetLoader{
   "support": "SUPPORT",
   "logOut": "LOGOUT",
   "fieldsCannotBeEmpty": "Fields cannot be empty!",
-  "addDriver": "Add driver",
+  "addDriver": "Add a driver",
+  "createDelivery": "Create a delivery",
   "notCorrectLoginOrPassword": "Not correct login or password"
 };
 static const Map<String,dynamic> ua = {
@@ -42,6 +43,7 @@ static const Map<String,dynamic> ua = {
   "logOut": "ВИХІД",
   "fieldsCannotBeEmpty": "Поля не можуть бути пустими!",
   "addDriver": "Додати водія",
+  "createDelivery": "Створити наказ",
   "notCorrectLoginOrPassword": "Не правильний логін або пароль"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "ua": ua};

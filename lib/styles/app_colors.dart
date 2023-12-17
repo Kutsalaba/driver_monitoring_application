@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const dirtyBlack = Color(0xff141414);
+
+  static const brightGrey = Color(0xff404446);
   
   static const contrastBlack = Color(0xff121212);
   static const contrastGrey = Color(0xffe3e5e5);

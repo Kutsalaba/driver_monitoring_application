@@ -25,6 +25,9 @@ class CustomMenuDrawer extends StatelessWidget {
         (context.read<AppStateCubit>().state as AuthorizedState).user.chiefFlag;
     var signInCubit = getIt<SignInCubit>();
     return Drawer(
+      elevation: 0,
+      shadowColor: Colors.transparent,
+      surfaceTintColor: Colors.transparent,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(0),
@@ -72,7 +75,7 @@ class CustomMenuDrawer extends StatelessWidget {
                     itemText: LocaleKeys.vehicles.tr(),
                     iconPath: Assets.icons.car,
                     onTap: () {
-                      log('CARS');
+                      AutoRouter.of(context).push(const VehiclesRoute());
                     },
                   ),
                 ),
@@ -82,7 +85,7 @@ class CustomMenuDrawer extends StatelessWidget {
                 itemText: LocaleKeys.support.tr(),
                 iconPath: Assets.icons.support,
                 onTap: () {
-                  log('HELP');
+                  AutoRouter.of(context).push(const SupportRoute());
                 },
               ),
               SizedBox(height: 26.h),

@@ -6,7 +6,10 @@ import 'package:driver_monitoring_application/styles/app_colors.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../gen/assets.gen.dart';
+import '../../routes/app_router.gr.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_menu_drawer/custom_menu_drawer.dart';
 
@@ -25,6 +28,7 @@ class HomePage extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: EdgeInsets.symmetric(vertical: 20.h),
@@ -47,6 +51,44 @@ class HomePage extends StatelessWidget {
                     },
                   ),
                 ],
+              ),
+            ),
+            SizedBox(
+              width: 240.w,
+              child: ElevatedButton(
+                onPressed: () {
+                  AutoRouter.of(context).push(const AddDeliveryRoute());
+                },
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                  foregroundColor: Colors.transparent,
+                  disabledBackgroundColor: Colors.transparent,
+                  disabledForegroundColor: Colors.transparent,
+                  backgroundColor: AppColors.deepGrey,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16.w),
+                  ),
+                ),
+                child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 16.h, horizontal: 20.w),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(right: 16.w),
+                        child: SvgPicture.asset(
+                          Assets.icons.circlePlus,
+                          width: 32.w,
+                          height: 32.h,
+                        ),
+                      ),
+                      Text(
+                        'CREATE NEW',
+                        style: Theme.of(context).primaryTextTheme.displayMedium,
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ],

@@ -10,6 +10,7 @@
     "support": "SUPPORT",
     "logOut": "LOGOUT",
     "fieldsCannotBeEmpty": "Fields cannot be empty!",
-    "addDriver": "Add driver",
+    "addDriver": "Add a driver",
+    "createDelivery": "Create a delivery",
     "notCorrectLoginOrPassword":"Not correct login or password"
 }
