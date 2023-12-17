@@ -16,6 +16,8 @@ class AppColors {
   static const glazyBlue = Color(0xff48A7F8);
   static const glazyGrey = Color(0xff5C5C5C);
 
+  static const luminanceGrey = Color(0xffBBBBBB);
+
   static const deepGrey = Color(0xff1C1C1D);
 
 

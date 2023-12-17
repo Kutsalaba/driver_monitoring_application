@@ -1,9 +1,6 @@
 import 'package:driver_monitoring_application/styles/app_colors.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../localization/locale_keys.g.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({

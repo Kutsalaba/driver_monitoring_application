@@ -20,25 +20,29 @@ class CodegenLoader extends AssetLoader{
   "termsOfUse": "Terms of use",
   "privacyPolicy": "Privacy Policy",
   "exit": "Exit",
-  "home": "HOME",
+  "orders": "ORDERS",
   "drivers": "DRIVERS",
   "cars": "CARS",
   "help": "HELP",
   "logOut": "LOGOUT",
-  "fieldNotBeEmpty": "Field must not be empty"
+  "fieldsCannotBeEmpty": "Fields cannot be empty!",
+  "addDriver": "Add driver",
+  "notCorrectLoginOrPassword": "Not correct login or password"
 };
 static const Map<String,dynamic> ua = {
   "appName": "Моніторинг водіїв",
   "startAppName": "MILITARY \nTRANSPORT \nSERVICE",
   "termsOfUse": "Правила використання",
   "privacyPolicy": "Політика конфіденційності",
-  "exit": "Вихід",
-  "home": "HOME",
-  "drivers": "DRIVERS",
-  "cars": "CARS",
-  "help": "HELP",
-  "logOut": "LOGOUT",
-  "fieldNotBeEmpty": "Field must not be empty"
+  "exit": "ВИХІД",
+  "orders": "НАКАЗИ",
+  "drivers": "ВОДІЇ",
+  "cars": "ТРАНСПОРТ",
+  "help": "ПІДТРИМКА",
+  "logOut": "ВИХІД",
+  "fieldsCannotBeEmpty": "Поля не можуть бути пустими!",
+  "addDriver": "Додати водія",
+  "notCorrectLoginOrPassword": "Не правильний логін або пароль"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "ua": ua};
 }

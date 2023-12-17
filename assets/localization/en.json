@@ -4,10 +4,12 @@
     "termsOfUse": "Terms of use",
     "privacyPolicy": "Privacy Policy",
     "exit": "Exit",
-    "home": "HOME",
+    "orders": "ORDERS",
     "drivers": "DRIVERS",
     "cars": "CARS",
     "help": "HELP",
     "logOut": "LOGOUT",
-    "fieldNotBeEmpty": "Field must not be empty"
+    "fieldsCannotBeEmpty": "Fields cannot be empty!",
+    "addDriver": "Add driver",
+    "notCorrectLoginOrPassword":"Not correct login or password"
 }

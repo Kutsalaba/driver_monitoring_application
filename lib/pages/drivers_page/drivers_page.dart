@@ -12,6 +12,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../localization/locale_keys.g.dart';
 import '../../routes/app_router.gr.dart';
 import '../../styles/app_colors.dart';
+import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_menu_drawer/custom_menu_drawer.dart';
 import 'widgets/driver_tile.dart';
 
@@ -24,17 +25,8 @@ class DriversPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.contrastBlack,
       drawer: const CustomMenuDrawer(),
-      appBar: AppBar(
-        backgroundColor: AppColors.contrastBlack,
-        iconTheme: IconThemeData(
-          color: AppColors.contrastGrey,
-          size: 32.w,
-        ),
-        title: Text(
-          LocaleKeys.drivers.tr(),
-          style: Theme.of(context).primaryTextTheme.titleLarge,
-        ),
-        centerTitle: true,
+      appBar: CustomAppBar(
+        title: LocaleKeys.drivers.tr(),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -80,34 +72,36 @@ class DriversPage extends StatelessWidget {
                 ),
               ),
             ),
-            // FutureBuilder(
-            //   future: getIt<DbDrivers>().fetchAllDrivers(),
-            //   builder: (context, snapshot) {
-            //     if (snapshot.hasData) {
-            //       return Column(
-            //         children: snapshot.requireData
-            //             .map(
-            //               (driver) => Padding(
-            //                 padding: EdgeInsets.only(top: 20.h),
-            //                 child: DriverTile(
-            //                   driver: driver,
-            //                 ),
-            //               ),
-            //             )
-            //             .toList(),
-            //       );
-            //     }
-            //     return SizedBox(
-            //       height: 30.h,
-            //       width: 30.w,
-            //       child: const Center(
-            //         child: CircularProgressIndicator(
-            //           color: AppColors.white,
-            //         ),
-            //       ),
-            //     );
-            //   },
-            // ),
+            FutureBuilder(
+              future: getIt<DbDrivers>().fetchAllDrivers(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return SingleChildScrollView(
+                    child: Column(
+                      children: snapshot.requireData
+                          .map(
+                            (driver) => Padding(
+                              padding: EdgeInsets.only(top: 20.h),
+                              child: DriverTile(
+                                driver: driver,
+                              ),
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  );
+                }
+                return SizedBox(
+                  height: 30.h,
+                  width: 30.w,
+                  child: const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.white,
+                    ),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),

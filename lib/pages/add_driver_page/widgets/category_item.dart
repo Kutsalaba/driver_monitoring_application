@@ -1,4 +1,6 @@
+import 'package:driver_monitoring_application/styles/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({
@@ -16,7 +18,7 @@ class CategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onPressed,
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(10.w),
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(
@@ -27,16 +29,14 @@ class CategoryItem extends StatelessWidget {
           color: isSelected
               ? const Color(0xffFF8A00).withOpacity(0.8)
               : Theme.of(context).primaryColor.withOpacity(0.1),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20.w),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
         child: Text(
           name,
-          style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
-            color: isSelected ? Colors.white : Theme.of(context).primaryColor,
-          ),
+          style: Theme.of(context).primaryTextTheme.bodyMedium!.copyWith(
+                color: isSelected ? AppColors.contrastGrey : AppColors.blue,
+              ),
         ),
       ),
     );

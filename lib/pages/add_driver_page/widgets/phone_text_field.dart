@@ -72,7 +72,7 @@ class PhoneTextField extends StatelessWidget {
         context.read<AddDriverCubit>().savePhoneNumber(phone.completeNumber);
       },
       onCountryChanged: (country) {
-        print('Country changed to: ' + country.name);
+        log('Country changed to: ${country.name}');
       },
     );
   }

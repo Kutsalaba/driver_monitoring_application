@@ -1,24 +1,15 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:driver_monitoring_application/localization/locale_keys.g.dart';
-import 'package:driver_monitoring_application/services/db_service.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:dio/dio.dart';
-import 'dart:io';
-import 'package:postgres/postgres.dart';
 
 import '../../cubit/app_state.dart';
 import '../../cubit/app_state_cubit.dart';
-import '../../domain/shared_models/api/user_model.dart';
 import '../../gen/assets.gen.dart';
 import '../../routes/app_router.gr.dart';
 import '../../services/injectible/injectible_init.dart';
-import '../../services/secure_storage_service.dart';
 import '../../styles/app_colors.dart';
 import 'cubit/splash_cubit.dart';
 

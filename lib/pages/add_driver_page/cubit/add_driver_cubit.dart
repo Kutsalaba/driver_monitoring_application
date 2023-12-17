@@ -26,9 +26,18 @@ class AddDriverCubit extends Cubit<AddDriverState> {
     emit(AddDriverSelecting(
       licenseCategories: [
         LicenseCategory(name: 'A1'),
-        LicenseCategory(name: 'A2'),
+        LicenseCategory(name: 'A'),
         LicenseCategory(name: 'B1'),
-        LicenseCategory(name: 'B2'),
+        LicenseCategory(name: 'B'),
+        LicenseCategory(name: 'C1'),
+        LicenseCategory(name: 'C'),
+        LicenseCategory(name: 'D'),
+        LicenseCategory(name: 'D1'),
+        LicenseCategory(name: 'C1E'),
+        LicenseCategory(name: 'BE'),
+        LicenseCategory(name: 'CE'),
+        LicenseCategory(name: 'D1E'),
+        LicenseCategory(name: 'DE'),
       ],
     ));
   }

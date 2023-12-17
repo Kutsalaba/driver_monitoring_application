@@ -39,6 +39,12 @@ class $AssetsIconsGen {
   /// File path: assets/icons/picture_add.svg
   String get pictureAdd => 'assets/icons/picture_add.svg';
 
+  /// File path: assets/icons/success.svg
+  String get success => 'assets/icons/success.svg';
+
+  /// File path: assets/icons/warning.svg
+  String get warning => 'assets/icons/warning.svg';
+
   /// List of all assets
   List<String> get values => [
         car,
@@ -49,7 +55,9 @@ class $AssetsIconsGen {
         home,
         location,
         logOut,
-        pictureAdd
+        pictureAdd,
+        success,
+        warning
       ];
 }
 

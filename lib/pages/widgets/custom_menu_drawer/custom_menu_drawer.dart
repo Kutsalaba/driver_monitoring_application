@@ -1,11 +1,8 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:driver_monitoring_application/cubit/app_state.dart';
 import 'package:driver_monitoring_application/cubit/app_state_cubit.dart';
-import 'package:driver_monitoring_application/domain/shared_models/api/user_model.dart';
-import 'package:driver_monitoring_application/services/secure_storage_service.dart';
 import 'package:driver_monitoring_application/styles/app_colors.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +12,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../gen/assets.gen.dart';
 import '../../../localization/locale_keys.g.dart';
 import '../../../routes/app_router.gr.dart';
-
 import '../../../services/injectible/injectible_init.dart';
 import '../../sign_in_page/cubit/sign_in_cubit.dart';
 import 'custom_menu_tile.dart';
@@ -47,7 +43,7 @@ class CustomMenuDrawer extends StatelessWidget {
               Assets.logo.image(height: 80.h),
               SizedBox(height: 60.h),
               CustomMenuTile(
-                itemText: LocaleKeys.home.tr(),
+                itemText: LocaleKeys.orders.tr(),
                 iconPath: Assets.icons.home,
                 onTap: () {
                   AutoRouter.of(context).replace(const HomeRoute());
@@ -95,8 +91,9 @@ class CustomMenuDrawer extends StatelessWidget {
                 itemText: LocaleKeys.logOut.tr(),
                 iconPath: Assets.icons.logOut,
                 onTap: () async {
+                  var route = AutoRouter.of(context);
                   await signInCubit.signOut();
-                  AutoRouter.of(context).replace(const SignInRoute());
+                  route.replace(const SignInRoute());
                 },
               ),
               SizedBox(height: 50.h)

@@ -41,7 +41,7 @@ class AppThemeData {
           fontWeight: FontWeight.w400,
         ),
         bodyLarge: TextStyle(
-          fontSize: 12.sp,
+          fontSize: 16.sp,
           fontWeight: FontWeight.w600,
         ),
         bodyMedium: TextStyle(

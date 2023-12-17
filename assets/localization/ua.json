@@ -3,11 +3,13 @@
     "startAppName": "MILITARY \nTRANSPORT \nSERVICE",
     "termsOfUse": "Правила використання",
     "privacyPolicy": "Політика конфіденційності",
-    "exit": "Вихід",
-    "home": "HOME",
-    "drivers": "DRIVERS",
-    "cars": "CARS",
-    "help": "HELP",
-    "logOut": "LOGOUT",
-    "fieldNotBeEmpty": "Field must not be empty"
+    "exit": "ВИХІД",
+    "orders": "НАКАЗИ",
+    "drivers": "ВОДІЇ",
+    "cars": "ТРАНСПОРТ",
+    "help": "ПІДТРИМКА",
+    "logOut": "ВИХІД",
+    "fieldsCannotBeEmpty": "Поля не можуть бути пустими!",
+    "addDriver": "Додати водія",
+    "notCorrectLoginOrPassword":"Не правильний логін або пароль"
 }

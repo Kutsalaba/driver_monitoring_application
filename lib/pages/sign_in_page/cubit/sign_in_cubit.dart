@@ -1,7 +1,5 @@
-import 'dart:developer';
-
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../domain/auth/repository/auth_repo.dart';
@@ -19,9 +17,6 @@ class SignInCubit extends Cubit<SignInState> {
   final AuthRepositoryI repository;
 
   Future<void> signIn() async {
-    //TODO
-    log(loginController.text);
-    log(passwordController.text);
     final result = await repository.signIn(
       login: loginController.text,
       password: passwordController.text,

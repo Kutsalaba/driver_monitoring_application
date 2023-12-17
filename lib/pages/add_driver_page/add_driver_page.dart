@@ -14,7 +14,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../localization/locale_keys.g.dart';
 import '../../services/injectible/injectible_init.dart';
 import '../../styles/app_colors.dart';
+import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_text_field.dart';
+import '../widgets/multy_alert_dialog.dart';
 import 'widgets/category_item.dart';
 import 'widgets/phone_text_field.dart';
 
@@ -33,17 +35,8 @@ class _AddDriverPageState extends State<AddDriverPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.contrastBlack,
-      appBar: AppBar(
-        backgroundColor: AppColors.contrastBlack,
-        iconTheme: IconThemeData(
-          color: AppColors.contrastGrey,
-          size: 32.w,
-        ),
-        title: Text(
-          LocaleKeys.drivers.tr(),
-          style: Theme.of(context).primaryTextTheme.titleLarge,
-        ),
-        centerTitle: true,
+      appBar: CustomAppBar(
+        title: LocaleKeys.drivers.tr(),
       ),
       body: BlocProvider(
         create: (context) => getIt<AddDriverCubit>()..load(),
@@ -138,7 +131,7 @@ class _AddDriverPageState extends State<AddDriverPage> {
                               width: 50.w,
                               child: CustomTextField(
                                 controller: addDriverCubit.ageController,
-                                hintText: '  0',
+                                hintText: '0',
                                 keyboardType: TextInputType.number,
                               ),
                             ),
@@ -175,7 +168,6 @@ class _AddDriverPageState extends State<AddDriverPage> {
                             ],
                           ),
                         ),
-                        // SizedBox(width: 32.w),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -220,8 +212,8 @@ class _AddDriverPageState extends State<AddDriverPage> {
                       ),
                     ),
                     Wrap(
-                      spacing: 12,
-                      runSpacing: 12,
+                      spacing: 10.w,
+                      runSpacing: 8.h,
                       children: state.licenseCategories
                           .map(
                             (category) => CategoryItem(
@@ -234,7 +226,7 @@ class _AddDriverPageState extends State<AddDriverPage> {
                           )
                           .toList(),
                     ),
-                    SizedBox(height: 20.h),
+                    SizedBox(height: 16.h),
                     Center(
                       child: SizedBox(
                         width: 300.w,
@@ -242,21 +234,21 @@ class _AddDriverPageState extends State<AddDriverPage> {
                           onPressed: () async {
                             var route = AutoRouter.of(context);
                             if (context.read<AddDriverCubit>().confirmInput()) {
-                              await context.read<AddDriverCubit>().addDriver();
+                              // TODO will uncomment
+                              // await context.read<AddDriverCubit>().addDriver();
                               if (context.mounted) {
-                                Timer? timer =
-                                    Timer(Duration(milliseconds: 1500), () {
+                                Timer? timer = Timer(
+                                    const Duration(milliseconds: 1800), () {
                                   route.popAndPush(const DriversRoute());
-                                  // route.replace(const AddDriverRoute());
                                 });
                                 await showDialog(
                                   context: context,
                                   builder: (context) {
-                                    return Center(
-                                      child: Dialog(
-                                        child: Text(
-                                            'The driver was successfully added!'),
-                                      ),
+                                    return MultyAlertDialog(
+                                      text:
+                                          'The driver was successfully added!',
+                                      svgImagePath: Assets.icons.success,
+                                      haveOkButton: false,
                                     );
                                   },
                                 ).then((value) {
@@ -265,13 +257,19 @@ class _AddDriverPageState extends State<AddDriverPage> {
                                 });
                               }
                             } else {
-                              showAboutDialog(context: context);
+                              await showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return MultyAlertDialog(
+                                    text: LocaleKeys.fieldsCannotBeEmpty.tr(),
+                                    svgImagePath: Assets.icons.success,
+                                  );
+                                },
+                              );
                             }
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: state.isInputCompleted
-                                ? AppColors.glazyBlue
-                                : AppColors.contrastGrey,
+                            backgroundColor: AppColors.glazyBlue,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12.w),
                             ),
@@ -282,9 +280,7 @@ class _AddDriverPageState extends State<AddDriverPage> {
                                 .primaryTextTheme
                                 .titleMedium!
                                 .copyWith(
-                                  color: state.isInputCompleted
-                                      ? AppColors.white
-                                      : AppColors.deepGrey,
+                                  color: AppColors.white,
                                 ),
                           ),
                         ),
