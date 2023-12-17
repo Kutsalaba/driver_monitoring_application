@@ -1,10 +1,10 @@
 name: driver_monitoring_application
 description: Driver monitoring app for military unit.
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.1.5 <4.0.0'
+  sdk: ">=3.1.5 <4.0.0"
 
 dependencies:
   flutter:
@@ -28,6 +28,7 @@ dependencies:
   flutter_screenutil: ^5.9.0
   responsive_framework: ^1.1.1
   flutter_svg: ^2.0.9
+  intl_phone_field: ^3.2.0
 
   flutter_secure_storage: ^9.0.0
   geolocator: ^10.1.0

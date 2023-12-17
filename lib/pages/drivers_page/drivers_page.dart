@@ -2,12 +2,15 @@ import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:driver_monitoring_application/gen/assets.gen.dart';
+import 'package:driver_monitoring_application/services/db_drivers.dart';
+import 'package:driver_monitoring_application/services/injectible/injectible_init.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../localization/locale_keys.g.dart';
+import '../../routes/app_router.gr.dart';
 import '../../styles/app_colors.dart';
 import '../widgets/custom_menu_drawer/custom_menu_drawer.dart';
 import 'widgets/driver_tile.dart';
@@ -61,7 +64,9 @@ class DriversPage extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                AutoRouter.of(context).push(const AddDriverRoute());
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.deepGrey,
                 shape: const CircleBorder(),
@@ -76,7 +81,14 @@ class DriversPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20.h),
-            DriverTile(),
+            const DriverTile(),
+            SizedBox(height: 20.h),
+            ElevatedButton(
+              onPressed: () async {
+                await getIt<DbDrivers>().fetchAllDrivers();
+              },
+              child: Text('GET DRIVERS'),
+            ),
           ],
         ),
       ),

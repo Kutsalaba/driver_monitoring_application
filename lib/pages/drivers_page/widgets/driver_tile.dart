@@ -6,15 +6,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'driver_info_dialog.dart';
+
 class DriverTile extends StatelessWidget {
   const DriverTile({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        log('OPEN');
-      },
+      onTap: () => showDialog(
+        context: context,
+        builder: (context) {
+          return Center(
+            child: DriverInfoDialog(
+              imagePath: Assets.images.test.path,
+              name: 'Поки текст',
+            ),
+          );
+        },
+      ),
       child: Container(
         height: 90.h,
         decoration: BoxDecoration(

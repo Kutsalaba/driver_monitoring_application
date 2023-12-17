@@ -72,7 +72,7 @@ class SignInPage extends StatelessWidget {
                         Text(
                           'SIGN IN',
                           style:
-                              Theme.of(context).primaryTextTheme.displayMedium,
+                              Theme.of(context).primaryTextTheme.displayLarge,
                         ),
                         SizedBox(height: 40.h),
                         EmailField(

@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../routes/app_router.dart';
 import '../../styles/app_theme_data.dart';
+import '../db_drivers.dart';
 import '../db_service.dart';
 import '../secure_storage_service.dart';
 import 'injectible_init.config.dart';
@@ -29,4 +30,7 @@ abstract class RegisterModule {
 
   @lazySingleton
   SecureStorage get secureStorage => SecureStorage();
+
+  @lazySingleton
+  DbDrivers get dbDrivers => DbDrivers();
 }

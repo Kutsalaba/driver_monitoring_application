@@ -29,12 +29,12 @@ class AppThemeData {
           fontWeight: FontWeight.w400,
         ),
         displayLarge: TextStyle(
-          fontSize: 44.sp,
-          fontWeight: FontWeight.w600,
-        ),
-        displayMedium: TextStyle(
           fontSize: 28.sp,
           fontWeight: FontWeight.w700,
+        ),
+        displayMedium: TextStyle(
+          fontSize: 22.sp,
+          fontWeight: FontWeight.w400,
         ),
         displaySmall: TextStyle(
           fontSize: 18.sp,

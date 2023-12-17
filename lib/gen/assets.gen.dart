@@ -36,9 +36,21 @@ class $AssetsIconsGen {
   /// File path: assets/icons/log_out.svg
   String get logOut => 'assets/icons/log_out.svg';
 
+  /// File path: assets/icons/picture_add.svg
+  String get pictureAdd => 'assets/icons/picture_add.svg';
+
   /// List of all assets
-  List<String> get values =>
-      [car, circlePlus, closeRed, driver, help, home, location, logOut];
+  List<String> get values => [
+        car,
+        circlePlus,
+        closeRed,
+        driver,
+        help,
+        home,
+        location,
+        logOut,
+        pictureAdd
+      ];
 }
 
 class $AssetsImagesGen {
