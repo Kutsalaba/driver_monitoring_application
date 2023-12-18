@@ -16,17 +16,6 @@ class AuthRepositoryImplementation implements AuthRepositoryI {
   final AuthDataSourceI remoteDataSource;
 
   @override
-  Future<Either<Failure, UserModel>> isUserSignedIn(String login) async {
-    try {
-      //TODO
-      final result = await remoteDataSource.getUserBylogin(login);
-      return Right(result);
-    } on ServerFailure catch (exception) {
-      return Left(ServerFailure(message: 'Something went wrong: $exception'));
-    }
-  }
-
-  @override
   Future<Either<Failure, UserModel>> signIn({
     required String login,
     required String password,

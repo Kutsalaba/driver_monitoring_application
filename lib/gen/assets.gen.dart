@@ -64,11 +64,16 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/test.jpg
-  AssetGenImage get test => const AssetGenImage('assets/images/test.jpg');
+  /// File path: assets/images/default_car.jpg
+  AssetGenImage get defaultCar =>
+      const AssetGenImage('assets/images/default_car.jpg');
+
+  /// File path: assets/images/default_driver.jpg
+  AssetGenImage get defaultDriver =>
+      const AssetGenImage('assets/images/default_driver.jpg');
 
   /// List of all assets
-  List<AssetGenImage> get values => [test];
+  List<AssetGenImage> get values => [defaultCar, defaultDriver];
 }
 
 class $AssetsLocalizationGen {

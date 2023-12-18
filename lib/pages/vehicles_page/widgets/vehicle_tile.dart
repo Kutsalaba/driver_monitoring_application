@@ -1,24 +1,23 @@
 import 'dart:developer';
 
 import 'package:driver_monitoring_application/gen/assets.gen.dart';
-import 'package:driver_monitoring_application/pages/drivers_page/cubit/drivers_cubit.dart';
+import 'package:driver_monitoring_application/localization/locale_keys.g.dart';
 import 'package:driver_monitoring_application/styles/app_colors.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../models/driver_model.dart';
-import '../../../services/injectible/injectible_init.dart';
-import '../../../utils/helpers.dart';
-import 'driver_info_dialog.dart';
+import '../../../models/vehicle_model.dart';
+import 'vehicle_info_dialog.dart';
 
-class DriverTile extends StatelessWidget {
-  const DriverTile({
+class VehicleTile extends StatelessWidget {
+  const VehicleTile({
     super.key,
-    required this.driver,
+    required this.vehicle,
   });
 
-  final DriverModel driver;
+  final VehicleModel vehicle;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +26,9 @@ class DriverTile extends StatelessWidget {
         context: context,
         builder: (context) {
           return Center(
-            child: DriverInfoDialog(
+            child: VehicleInfoDialog(
               imagePath: Assets.images.defaultDriver.path,
-              driverModel: driver,
+              vehicleModel: vehicle,
             ),
           );
         },
@@ -50,7 +49,7 @@ class DriverTile extends StatelessWidget {
                     padding: EdgeInsets.only(right: 15.w),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20.w),
-                      child: Assets.images.defaultDriver.image(
+                      child: Assets.images.defaultCar.image(
                         width: 65.w,
                         fit: BoxFit.fill,
                       ),
@@ -67,7 +66,7 @@ class DriverTile extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          '${driver.driverFirstName} ${driver.driverLastName} ${driver.driverPatronymic}',
+                          vehicle.vehicleName,
                           style: Theme.of(context)
                               .primaryTextTheme
                               .bodyMedium!
@@ -79,12 +78,8 @@ class DriverTile extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.only(top: 6.h),
                           child: GestureDetector(
-                            onTap: () async {
-                              // TODO add alert
-                              log('Delete ${driver.userId}');
-                              await getIt<DriversCubit>()
-                                  .deleteDriver(driver.userId!);
-                              log('Successfully deleted');
+                            onTap: () {
+                              log('CLOSE');
                             },
                             child: SvgPicture.asset(
                               Assets.icons.closeRed,
@@ -106,13 +101,16 @@ class DriverTile extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Age: ${driver.driverAge.toString()}',
+                                '${LocaleKeys.status.tr()}: ${vehicle.currentStatus}',
+                                maxLines: 2,
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .bodySmall,
                               ),
                               Text(
-                                'Rank: ${driver.driverRank}',
+                                LocaleKeys.consumption.tr(namedArgs: {
+                                  'fuelPer': vehicle.fuelPer100km.toString(),
+                                }),
                                 maxLines: 2,
                                 style: Theme.of(context)
                                     .primaryTextTheme
@@ -127,14 +125,17 @@ class DriverTile extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Categories: ${getStringCategories(driver)}',
-                                maxLines: 1,
+                                LocaleKeys.maxDistance.tr(namedArgs: {
+                                  'maxDistance': vehicle.maxDistance.toString(),
+                                }),
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .bodySmall,
                               ),
                               Text(
-                                'Status: ${driver.currentStatus}',
+                                LocaleKeys.capacity.tr(namedArgs: {
+                                  'capacity': vehicle.capacityKg.toString(),
+                                }),
                                 style: Theme.of(context)
                                     .primaryTextTheme
                                     .bodySmall,

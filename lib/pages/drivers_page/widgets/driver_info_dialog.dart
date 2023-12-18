@@ -1,7 +1,7 @@
-import 'package:driver_monitoring_application/models/driver_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../models/driver_model.dart';
 import '../../../styles/app_colors.dart';
 
 class DriverInfoDialog extends StatelessWidget {

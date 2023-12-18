@@ -1,10 +1,11 @@
+import 'package:driver_monitoring_application/services/vehicles_service.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../routes/app_router.dart';
 import '../../styles/app_theme_data.dart';
-import '../db_drivers.dart';
-import '../db_service.dart';
+import '../drivers_service.dart';
+import '../auth_service.dart';
 import '../secure_storage_service.dart';
 import 'injectible_init.config.dart';
 
@@ -26,11 +27,14 @@ abstract class RegisterModule {
   AppThemeData get appThemeData => AppThemeData();
 
   @lazySingleton
-  DbService get dbService => DbService();
+  AuthService get authService => AuthService();
 
   @lazySingleton
   SecureStorage get secureStorage => SecureStorage();
 
   @lazySingleton
-  DbDrivers get dbDrivers => DbDrivers();
+  DriversService get driversService => DriversService();
+
+  @lazySingleton
+  VehiclesService get vehiclesService => VehiclesService();
 }

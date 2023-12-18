@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:driver_monitoring_application/cubit/app_state.dart';
 import 'package:driver_monitoring_application/cubit/app_state_cubit.dart';
@@ -21,9 +19,13 @@ class CustomMenuDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var chiefFlag =
-        (context.read<AppStateCubit>().state as AuthorizedState).user.chiefFlag;
-    var signInCubit = getIt<SignInCubit>();
+    bool? chiefFlag;
+    if (context.read<AppStateCubit>().state is AuthorizedState) {
+      chiefFlag = (context.read<AppStateCubit>().state as AuthorizedState)
+          .user
+          .chiefFlag;
+    }
+
     return Drawer(
       elevation: 0,
       shadowColor: Colors.transparent,
@@ -54,7 +56,7 @@ class CustomMenuDrawer extends StatelessWidget {
                 },
               ),
               Visibility(
-                visible: chiefFlag!,
+                visible: chiefFlag ?? false,
                 child: Padding(
                   padding: EdgeInsets.only(top: 26.h),
                   child: CustomMenuTile(
@@ -68,7 +70,7 @@ class CustomMenuDrawer extends StatelessWidget {
                 ),
               ),
               Visibility(
-                visible: chiefFlag,
+                visible: chiefFlag ?? false,
                 child: Padding(
                   padding: EdgeInsets.only(top: 26.h),
                   child: CustomMenuTile(
@@ -95,7 +97,7 @@ class CustomMenuDrawer extends StatelessWidget {
                 iconPath: Assets.icons.logOut,
                 onTap: () async {
                   var route = AutoRouter.of(context);
-                  await signInCubit.signOut();
+                  await getIt<SignInCubit>().signOut();
                   route.replace(const SignInRoute());
                 },
               ),

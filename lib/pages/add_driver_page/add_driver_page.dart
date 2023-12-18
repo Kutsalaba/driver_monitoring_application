@@ -234,8 +234,7 @@ class _AddDriverPageState extends State<AddDriverPage> {
                           onPressed: () async {
                             var route = AutoRouter.of(context);
                             if (context.read<AddDriverCubit>().confirmInput()) {
-                              // TODO will uncomment
-                              // await context.read<AddDriverCubit>().addDriver();
+                              await context.read<AddDriverCubit>().addDriver();
                               if (context.mounted) {
                                 Timer? timer = Timer(
                                     const Duration(milliseconds: 1800), () {

@@ -6,8 +6,8 @@ import 'package:driver_monitoring_application/utils/constants.dart';
 
 import '../models/driver_model.dart';
 
-class DbDrivers {
-  DbDrivers();
+class DriversService {
+  DriversService();
 
   final Dio _dio = Dio();
 
@@ -32,6 +32,14 @@ class DbDrivers {
         '${UrlConstants.baseUrl}/driver',
         data: driver.toJson(),
       );
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  Future<void> deleteDriver(String driverId) async {
+    try {
+      await _dio.delete('${UrlConstants.baseUrl}/driver/$driverId');
     } catch (e) {
       throw Exception(e);
     }

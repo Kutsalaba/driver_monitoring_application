@@ -1,30 +1,30 @@
 class UserModel {
-  final int? userId;
+  final String? userId;
   final String? login;
-  final String? password;
+  final String? userPassword;
   final bool? chiefFlag;
 
   const UserModel({
     this.userId,
     this.login,
-    this.password,
+    this.userPassword,
     this.chiefFlag,
   });
 
   Map<String, dynamic> toJson() =>
   <String, dynamic>{
-      'userId': userId,
+      'user_id': userId,
       'login': login,
-      'password': password,
-      'chiefFlag': chiefFlag,
+      'user_password': userPassword,
+      'chief_flag': chiefFlag,
     };
   
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      userId: json['userId'] != null ? json['userId'] as int : null,
+      userId: json['user_id'] != null ? json['user_id'] as String : null,
       login: json['login'] != null ? json['login'] as String : null,
-      password: json['password'] != null ? json['password'] as String : null,
-      chiefFlag: json['chiefFlag'] != null ? json['chiefFlag'] as bool : null,
+      userPassword: json['user_password'] != null ? json['user_password'] as String : null,
+      chiefFlag: json['chief_flag'] != null ? json['chief_flag'] as bool : null,
     );
   }
 }

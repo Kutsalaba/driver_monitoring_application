@@ -7,7 +7,6 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'cubit/app_state.dart';
 import 'cubit/app_state_cubit.dart';
 import 'routes/app_router.dart';
-import 'services/db_service.dart';
 import 'services/injectible/injectible_init.dart';
 import 'styles/app_theme_data.dart';
 
@@ -19,9 +18,6 @@ Future<void> main() async {
 
   //GetIt setup
   configureDependencies();
-
-  // DB init connection
-  await getIt<DbService>().init();
 
   runApp(
     EasyLocalization(

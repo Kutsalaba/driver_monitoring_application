@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:driver_monitoring_application/pages/add_driver_page/models/license_category.dart';
-import 'package:driver_monitoring_application/services/db_drivers.dart';
+import 'package:driver_monitoring_application/services/drivers_service.dart';
 import 'package:driver_monitoring_application/services/injectible/injectible_init.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -100,7 +100,7 @@ class AddDriverCubit extends Cubit<AddDriverState> {
 
     newDriver = _addCategoriesToDriver(newDriver);
     log(newDriver.toJson().toString());
-    await getIt<DbDrivers>().addDriver(newDriver);
+    await getIt<DriversService>().addDriver(newDriver);
   }
 
   DriverModel _addCategoriesToDriver(DriverModel driver) {

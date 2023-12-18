@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:driver_monitoring_application/services/db_service.dart';
+import 'package:driver_monitoring_application/services/auth_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -14,7 +14,7 @@ import 'app_state.dart';
 @injectable
 class AppStateCubit extends Cubit<AppState> {
   final AuthRepositoryI authRepository;
-  final DbService dbService;
+  final AuthService dbService;
 
   AppStateCubit({
     required this.authRepository,
@@ -24,16 +24,7 @@ class AppStateCubit extends Cubit<AppState> {
   Future<void> checkAuthStatus() async {
     final currentUser = dbService.currentUser;
     if (currentUser != null) {
-      final result =
-          await authRepository.isUserSignedIn(currentUser.login ?? '');
-      result.fold(
-        (failure) {
-          emit(const UnauthorizedState());
-        },
-        (user) {
-          emit(AuthorizedState(user: user));
-        },
-      );
+      emit(AuthorizedState(user: currentUser));
     } else {
       var data = await getIt<SecureStorage>().readSecureData('creds');
       if (data != null) {

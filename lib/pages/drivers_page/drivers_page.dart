@@ -2,10 +2,11 @@ import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:driver_monitoring_application/gen/assets.gen.dart';
-import 'package:driver_monitoring_application/services/db_drivers.dart';
+import 'package:driver_monitoring_application/pages/drivers_page/cubit/drivers_cubit.dart';
 import 'package:driver_monitoring_application/services/injectible/injectible_init.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -28,85 +29,92 @@ class DriversPage extends StatelessWidget {
       appBar: CustomAppBar(
         title: LocaleKeys.drivers.tr(),
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 20.h, bottom: 2.h),
-              child: Row(
+      body: BlocProvider(
+        create: (context) => getIt<DriversCubit>()..fetchAllDrivers(),
+        child: BlocBuilder<DriversCubit, DriversState>(
+          builder: (context, state) {
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Column(
                 children: [
-                  Text(
-                    LocaleKeys.drivers.tr(),
-                    style: Theme.of(context)
-                        .primaryTextTheme
-                        .titleMedium
-                        ?.copyWith(
-                          fontWeight: FontWeight.w300,
+                  Padding(
+                    padding: EdgeInsets.only(top: 20.h, bottom: 2.h),
+                    child: Row(
+                      children: [
+                        Text(
+                          LocaleKeys.drivers.tr(),
+                          style: Theme.of(context)
+                              .primaryTextTheme
+                              .titleMedium
+                              ?.copyWith(
+                                fontWeight: FontWeight.w300,
+                              ),
                         ),
+                        const Spacer(),
+                        Switch.adaptive(
+                          value: true,
+                          onChanged: (newValue) {
+                            log('SWITCHING!');
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                  const Spacer(),
-                  Switch.adaptive(
-                    value: true,
-                    onChanged: (newValue) {
-                      log('SWITCHING!');
+                  ElevatedButton(
+                    onPressed: () {
+                      AutoRouter.of(context).push(const AddDriverRoute());
                     },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.deepGrey,
+                      shape: const CircleBorder(),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(12.w),
+                      child: SvgPicture.asset(
+                        Assets.icons.circlePlus,
+                        width: 32.w,
+                        height: 32.h,
+                      ),
+                    ),
                   ),
-                ],
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                AutoRouter.of(context).push(const AddDriverRoute());
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.deepGrey,
-                shape: const CircleBorder(),
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(12.w),
-                child: SvgPicture.asset(
-                  Assets.icons.circlePlus,
-                  width: 32.w,
-                  height: 32.h,
-                ),
-              ),
-            ),
-            FutureBuilder(
-              future: getIt<DbDrivers>().fetchAllDrivers(),
-              builder: (context, snapshot) {
-                return snapshot.hasData
-                    ? SingleChildScrollView(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.max,
-                          children: snapshot.requireData
-                              .map(
-                                (driver) => Padding(
-                                  padding: EdgeInsets.only(top: 20.h),
-                                  child: DriverTile(
-                                    driver: driver,
-                                  ),
-                                ),
-                              )
-                              .toList(),
-                        ),
-                      )
-                    : Padding(
-                        padding: EdgeInsets.only(top: 200.h),
-                        child: SizedBox(
-                          height: 50.h,
-                          width: 50.w,
-                          child: const Center(
-                            child: CircularProgressIndicator(
-                              color: AppColors.white,
+                  state.drivers.isNotEmpty
+                      ? RefreshIndicator(
+                          onRefresh: () async => await context
+                              .read<DriversCubit>()
+                              .fetchAllDrivers(),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.max,
+                              children: state.drivers
+                                  .map(
+                                    (driver) => Padding(
+                                      padding: EdgeInsets.only(top: 20.h),
+                                      child: DriverTile(
+                                        driver: driver,
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
+                          ),
+                        )
+                      : Padding(
+                          padding: EdgeInsets.only(top: 200.h),
+                          child: SizedBox(
+                            height: 50.h,
+                            width: 50.w,
+                            child: const Center(
+                              child: CircularProgressIndicator(
+                                color: AppColors.white,
+                              ),
                             ),
                           ),
                         ),
-                      );
-              },
-            ),
-          ],
+                ],
+              ),
+            );
+          },
         ),
       ),
     );

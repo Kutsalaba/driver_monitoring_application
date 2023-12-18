@@ -1,4 +1,4 @@
-import 'package:driver_monitoring_application/services/db_service.dart';
+import 'package:driver_monitoring_application/services/auth_service.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../core/errors/failures.dart';
@@ -11,7 +11,6 @@ abstract class AuthDataSourceI {
   });
   // Future<UserCredential> signUp(String email, String password);
   Future<void> signOut();
-  Future<UserModel> getUserBylogin(String login);
 }
 
 @Injectable(as: AuthDataSourceI)
@@ -21,7 +20,7 @@ class AuthDataSourceImpl implements AuthDataSourceI {
     // required this.firestoreUsers,
   });
 
-  final DbService dbService;
+  final AuthService dbService;
   // final FirestoreUsers firestoreUsers;
 
   @override
@@ -47,16 +46,6 @@ class AuthDataSourceImpl implements AuthDataSourceI {
       await dbService.signOut();
     } catch (exception) {
       throw (ServerFailure(message: exception.toString()));
-    }
-  }
-
-  @override
-  Future<UserModel> getUserBylogin(String login) async {
-    try {
-      final result = await dbService.getUserByLogin(login);
-      return result;
-    } catch (exception) {
-      throw ServerFailure(message: 'Something went wrong: $exception');
     }
   }
 

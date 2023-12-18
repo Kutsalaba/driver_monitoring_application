@@ -12,5 +12,9 @@
     "fieldsCannotBeEmpty": "Поля не можуть бути пустими!",
     "addDriver": "Додати водія",
     "createDelivery": "Створити наказ",
-    "notCorrectLoginOrPassword":"Не правильний логін або пароль"
+    "notCorrectLoginOrPassword": "Не правильний логін або пароль",
+    "status": "Статус",
+    "consumption": "Розхід: \n{fuelPer} Л / 100 км",
+    "maxDistance": "Макс відстань: {maxDistance} км",
+    "capacity": "Маса: {capacity} кг"
 }

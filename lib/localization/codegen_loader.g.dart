@@ -28,7 +28,11 @@ class CodegenLoader extends AssetLoader{
   "fieldsCannotBeEmpty": "Fields cannot be empty!",
   "addDriver": "Add a driver",
   "createDelivery": "Create a delivery",
-  "notCorrectLoginOrPassword": "Not correct login or password"
+  "notCorrectLoginOrPassword": "Not correct login or password",
+  "status": "Status",
+  "consumption": "Consumption:\n {fuelPer} L / 100 km",
+  "maxDistance": "Max distance: {maxDistance} km",
+  "capacity": "Capacity: {capacity} kg"
 };
 static const Map<String,dynamic> ua = {
   "appName": "Моніторинг водіїв",
@@ -44,7 +48,11 @@ static const Map<String,dynamic> ua = {
   "fieldsCannotBeEmpty": "Поля не можуть бути пустими!",
   "addDriver": "Додати водія",
   "createDelivery": "Створити наказ",
-  "notCorrectLoginOrPassword": "Не правильний логін або пароль"
+  "notCorrectLoginOrPassword": "Не правильний логін або пароль",
+  "status": "Статус",
+  "consumption": "Розхід: \n{fuelPer} Л / 100 км",
+  "maxDistance": "Макс відстань: {maxDistance} км",
+  "capacity": "Маса: {capacity} кг"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "ua": ua};
 }

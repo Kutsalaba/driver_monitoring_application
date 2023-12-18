@@ -15,5 +15,9 @@ abstract class  LocaleKeys {
   static const addDriver = 'addDriver';
   static const createDelivery = 'createDelivery';
   static const notCorrectLoginOrPassword = 'notCorrectLoginOrPassword';
+  static const status = 'status';
+  static const consumption = 'consumption';
+  static const maxDistance = 'maxDistance';
+  static const capacity = 'capacity';
 
 }

@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:driver_monitoring_application/routes/app_router.gr.dart';
