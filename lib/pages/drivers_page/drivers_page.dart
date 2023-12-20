@@ -30,7 +30,7 @@ class DriversPage extends StatelessWidget {
         title: LocaleKeys.drivers.tr(),
       ),
       body: BlocProvider(
-        create: (context) => getIt<DriversCubit>()..fetchAllDrivers(),
+        create: (context) => getIt<DriversCubit>()..getAllDrivers(),
         child: BlocBuilder<DriversCubit, DriversState>(
           builder: (context, state) {
             return Padding(
@@ -81,7 +81,7 @@ class DriversPage extends StatelessWidget {
                       ? RefreshIndicator(
                           onRefresh: () async => await context
                               .read<DriversCubit>()
-                              .fetchAllDrivers(),
+                              .getAllDrivers(),
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,

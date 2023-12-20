@@ -11,8 +11,8 @@ part 'vehicles_state.dart';
 class VehiclesCubit extends Cubit<VehiclesState> {
   VehiclesCubit() : super(const VehiclesState());
 
-  Future<void> fetchAllDrivers() async {
-    var drivers = await getIt<VehiclesService>().fetchAllVehicles();
+  Future<void> getAllVehicles() async {
+    var drivers = await getIt<VehiclesService>().getAllVehicles();
     emit(state.copyWith(drivers: drivers));
   }
 }

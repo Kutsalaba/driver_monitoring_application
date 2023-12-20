@@ -11,8 +11,8 @@ part 'drivers_state.dart';
 class DriversCubit extends Cubit<DriversState> {
   DriversCubit() : super(const DriversState());
 
-  Future<void> fetchAllDrivers() async {
-    var drivers = await getIt<DriversService>().fetchAllDrivers();
+  Future<void> getAllDrivers() async {
+    var drivers = await getIt<DriversService>().getAllDrivers();
     emit(state.copyWith(drivers: drivers));
   }
 

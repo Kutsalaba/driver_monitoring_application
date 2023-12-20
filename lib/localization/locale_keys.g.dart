@@ -6,7 +6,7 @@ abstract class  LocaleKeys {
   static const termsOfUse = 'termsOfUse';
   static const privacyPolicy = 'privacyPolicy';
   static const exit = 'exit';
-  static const orders = 'orders';
+  static const deliveries = 'deliveries';
   static const drivers = 'drivers';
   static const vehicles = 'vehicles';
   static const support = 'support';

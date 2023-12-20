@@ -11,7 +11,7 @@ class VehiclesService {
 
   final Dio _dio = Dio();
 
-  Future<List<VehicleModel>> fetchAllVehicles() async {
+  Future<List<VehicleModel>> getAllVehicles() async {
     try {
       var response = await _dio.get('${UrlConstants.baseUrl}/vehicles');
       var jsonNew = jsonDecode(response.data);

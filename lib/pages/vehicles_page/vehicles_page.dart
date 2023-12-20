@@ -31,7 +31,7 @@ class VehiclesPage extends StatelessWidget {
         title: LocaleKeys.vehicles.tr(),
       ),
       body: BlocProvider(
-        create: (context) => getIt<VehiclesCubit>()..fetchAllDrivers(),
+        create: (context) => getIt<VehiclesCubit>()..getAllVehicles(),
         child: BlocBuilder<VehiclesCubit, VehiclesState>(
           builder: (context, state) {
             return Padding(
@@ -82,7 +82,7 @@ class VehiclesPage extends StatelessWidget {
                       ? RefreshIndicator(
                           onRefresh: () async => await context
                               .read<DriversCubit>()
-                              .fetchAllDrivers(),
+                              .getAllDrivers(),
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,

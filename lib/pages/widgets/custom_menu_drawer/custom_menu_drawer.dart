@@ -36,7 +36,7 @@ class CustomMenuDrawer extends StatelessWidget {
           bottomRight: Radius.circular(0),
         ),
       ),
-      width: 200.w,
+      width: 220.w,
       backgroundColor: AppColors.dirtyBlack,
       child: SafeArea(
         child: Padding(
@@ -48,7 +48,7 @@ class CustomMenuDrawer extends StatelessWidget {
               Assets.logo.image(height: 80.h),
               SizedBox(height: 60.h),
               CustomMenuTile(
-                itemText: LocaleKeys.orders.tr(),
+                itemText: LocaleKeys.deliveries.tr(),
                 iconPath: Assets.icons.home,
                 onTap: () {
                   AutoRouter.of(context).replace(const HomeRoute());

@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../routes/app_router.dart';
 import '../../styles/app_theme_data.dart';
+import '../deliveries_service.dart';
 import '../drivers_service.dart';
 import '../auth_service.dart';
 import '../secure_storage_service.dart';
@@ -37,4 +38,7 @@ abstract class RegisterModule {
 
   @lazySingleton
   VehiclesService get vehiclesService => VehiclesService();
+
+  @lazySingleton
+  DeliveriesService get deliveriesService => DeliveriesService();
 }

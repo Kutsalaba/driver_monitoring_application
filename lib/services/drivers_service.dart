@@ -10,7 +10,7 @@ class DriversService {
 
   final Dio _dio = Dio();
 
-  Future<List<DriverModel>> fetchAllDrivers() async {
+  Future<List<DriverModel>> getAllDrivers() async {
     try {
       var response = await _dio.get('${UrlConstants.baseUrl}/drivers');
       var jsonNew = jsonDecode(response.data);
