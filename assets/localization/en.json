@@ -14,7 +14,20 @@
     "createDelivery": "Create a delivery",
     "notCorrectLoginOrPassword":"Not correct login or password",
     "status": "Status",
-    "consumption": "Consumption:\n {fuelPer} L / 100 km",
+    "consumption": "Consumption:\n{fuelPer} L / 100 km",
     "maxDistance": "Max distance: {maxDistance} km",
-    "capacity" : "Capacity: {capacity} kg"
+    "capacity": "Capacity: {capacity} kg",
+    "goodStatus": "Good",
+    "onRepairStatus": "On repair",
+    "brokenStatus": "Broken",
+    "maxDistanceTitle": "MAX DISTANCE",
+    "fuelTitle": "FUEL / 100 KM",
+    "capacityTittle": "CAPACITY",
+    "categoryOfVehicles": "VEHICLE CATEGORY",
+    "categoryOfLicense": "LICENSE CATEGORY",
+    "offRoadVehicle": "Off-road vehicle",
+    "truck": "Truck",
+    "bus": "Bus",
+    "car": "Car",
+    "tank": "Tank"
 }

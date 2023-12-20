@@ -30,9 +30,22 @@ class CodegenLoader extends AssetLoader{
   "createDelivery": "Create a delivery",
   "notCorrectLoginOrPassword": "Not correct login or password",
   "status": "Status",
-  "consumption": "Consumption:\n {fuelPer} L / 100 km",
+  "consumption": "Consumption:\n{fuelPer} L / 100 km",
   "maxDistance": "Max distance: {maxDistance} km",
-  "capacity": "Capacity: {capacity} kg"
+  "capacity": "Capacity: {capacity} kg",
+  "goodStatus": "Good",
+  "onRepairStatus": "On repair",
+  "brokenStatus": "Broken",
+  "maxDistanceTitle": "MAX DISTANCE",
+  "fuelTitle": "FUEL / 100 KM",
+  "capacityTittle": "CAPACITY",
+  "categoryOfVehicles": "VEHICLE CATEGORY",
+  "categoryOfLicense": "LICENSE CATEGORY",
+  "offRoadVehicle": "Off-road vehicle",
+  "truck": "Truck",
+  "bus": "Bus",
+  "car": "Car",
+  "tank": "Tank"
 };
 static const Map<String,dynamic> ua = {
   "appName": "Моніторинг водіїв",
@@ -50,9 +63,22 @@ static const Map<String,dynamic> ua = {
   "createDelivery": "Створити наказ",
   "notCorrectLoginOrPassword": "Не правильний логін або пароль",
   "status": "Статус",
-  "consumption": "Розхід: \n{fuelPer} Л / 100 км",
+  "consumption": "Розхід:\n{fuelPer} Л / 100 км",
   "maxDistance": "Макс відстань: {maxDistance} км",
-  "capacity": "Маса: {capacity} кг"
+  "capacity": "Маса: {capacity} кг",
+  "goodStatus": "Хороший",
+  "onRepairStatus": "На ремонті",
+  "brokenStatus": "Вийшов з ладу",
+  "maxDistanceTitle": "MAX DISTANCE",
+  "fuelTitle": "FUEL / 100 KM",
+  "capacityTittle": "CAPACITY",
+  "categoryOfVehicles": "VEHICLE CATEGORY",
+  "categoryOfLicense": "LICENSE CATEGORY",
+  "offRoadVehicle": "Off-road vehicle",
+  "truck": "Truck",
+  "bus": "Bus",
+  "car": "Car",
+  "tank": "Tank"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "ua": ua};
 }

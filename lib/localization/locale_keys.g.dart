@@ -19,5 +19,18 @@ abstract class  LocaleKeys {
   static const consumption = 'consumption';
   static const maxDistance = 'maxDistance';
   static const capacity = 'capacity';
+  static const goodStatus = 'goodStatus';
+  static const onRepairStatus = 'onRepairStatus';
+  static const brokenStatus = 'brokenStatus';
+  static const maxDistanceTitle = 'maxDistanceTitle';
+  static const fuelTitle = 'fuelTitle';
+  static const capacityTittle = 'capacityTittle';
+  static const categoryOfVehicles = 'categoryOfVehicles';
+  static const categoryOfLicense = 'categoryOfLicense';
+  static const offRoadVehicle = 'offRoadVehicle';
+  static const truck = 'truck';
+  static const bus = 'bus';
+  static const car = 'car';
+  static const tank = 'tank';
 
 }

@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:driver_monitoring_application/gen/assets.gen.dart';
 import 'package:driver_monitoring_application/localization/locale_keys.g.dart';
+import 'package:driver_monitoring_application/services/injectible/injectible_init.dart';
 import 'package:driver_monitoring_application/styles/app_colors.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../models/vehicle_model.dart';
+import '../../../services/vehicles_service.dart';
 import 'vehicle_info_dialog.dart';
 
 class VehicleTile extends StatelessWidget {
@@ -78,8 +78,9 @@ class VehicleTile extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.only(top: 6.h),
                           child: GestureDetector(
-                            onTap: () {
-                              log('CLOSE');
+                            onTap: () async {
+                              await getIt<VehiclesService>()
+                                  .deleteDriver(vehicle.vehicleId!);
                             },
                             child: SvgPicture.asset(
                               Assets.icons.closeRed,

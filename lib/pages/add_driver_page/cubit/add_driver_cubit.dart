@@ -13,7 +13,7 @@ part 'add_driver_state.dart';
 
 @injectable
 class AddDriverCubit extends Cubit<AddDriverState> {
-  AddDriverCubit() : super(const AddDriverState());
+  AddDriverCubit() : super(AddDriverInitial());
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController rankController = TextEditingController();

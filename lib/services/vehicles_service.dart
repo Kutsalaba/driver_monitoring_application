@@ -32,6 +32,15 @@ class VehiclesService {
         '${UrlConstants.baseUrl}/vehicle',
         data: vehicle.toJson(),
       );
+      log('SUCCSEE');
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  Future<void> deleteDriver(String vehicleId) async {
+    try {
+      await _dio.delete('${UrlConstants.baseUrl}/vehicle/$vehicleId');
     } catch (e) {
       throw Exception(e);
     }

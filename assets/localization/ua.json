@@ -14,7 +14,20 @@
     "createDelivery": "Створити наказ",
     "notCorrectLoginOrPassword": "Не правильний логін або пароль",
     "status": "Статус",
-    "consumption": "Розхід: \n{fuelPer} Л / 100 км",
+    "consumption": "Розхід:\n{fuelPer} Л / 100 км",
     "maxDistance": "Макс відстань: {maxDistance} км",
-    "capacity": "Маса: {capacity} кг"
+    "capacity": "Маса: {capacity} кг",
+    "goodStatus": "Хороший",
+    "onRepairStatus": "На ремонті",
+    "brokenStatus": "Вийшов з ладу",
+    "maxDistanceTitle": "MAX DISTANCE",
+    "fuelTitle": "FUEL / 100 KM",
+    "capacityTittle": "CAPACITY",
+    "categoryOfVehicles": "VEHICLE CATEGORY",
+    "categoryOfLicense": "LICENSE CATEGORY",
+    "offRoadVehicle": "Off-road vehicle",
+    "truck": "Truck",
+    "bus": "Bus",
+    "car": "Car",
+    "tank": "Tank"
 }
