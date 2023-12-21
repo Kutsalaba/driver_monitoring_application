@@ -1,13 +1,18 @@
 import 'package:auto_route/annotations.dart';
 import 'package:driver_monitoring_application/localization/locale_keys.g.dart';
+import 'package:driver_monitoring_application/pages/add_delivery_page/cubit/add_delivery_cubit.dart';
 import 'package:driver_monitoring_application/pages/widgets/custom_app_bar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../services/injectible/injectible_init.dart';
 import '../../styles/app_colors.dart';
 import '../widgets/custom_menu_drawer/custom_menu_drawer.dart';
 import 'widgets/delivery_tab.dart';
+import 'widgets/tabs_content/vehicle_driver_content.dart';
+import 'widgets/tabs_content/info_tab_content.dart';
 
 @RoutePage()
 class AddDeliveryPage extends StatefulWidget {
@@ -67,27 +72,20 @@ class _AddDeliveryPageState extends State<AddDeliveryPage> {
               ),
             ),
           ),
-          body: TabBarView(
-            children: [
-              Center(
-                child: Text(
-                  '1',
-                  style: Theme.of(context).primaryTextTheme.bodyLarge,
+          body: BlocProvider(
+            create: (context) => getIt<AddDeliveryCubit>()..load(),
+            child: TabBarView(
+              children: [
+                const InfoTabContent(),
+                VehicleDriverContent(),
+                Center(
+                  child: Text(
+                    '3',
+                    style: Theme.of(context).primaryTextTheme.bodyLarge,
+                  ),
                 ),
-              ),
-              Center(
-                child: Text(
-                  '2',
-                  style: Theme.of(context).primaryTextTheme.bodyLarge,
-                ),
-              ),
-              Center(
-                child: Text(
-                  '3',
-                  style: Theme.of(context).primaryTextTheme.bodyLarge,
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

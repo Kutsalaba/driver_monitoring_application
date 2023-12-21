@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_glow/flutter_glow.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../gen/assets.gen.dart';
 import '../../../styles/app_colors.dart';
 
 class DeliveryTab extends StatelessWidget {

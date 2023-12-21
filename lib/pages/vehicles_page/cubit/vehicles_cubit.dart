@@ -7,12 +7,12 @@ import '../../../services/injectible/injectible_init.dart';
 
 part 'vehicles_state.dart';
 
-@injectable
+@singleton
 class VehiclesCubit extends Cubit<VehiclesState> {
   VehiclesCubit() : super(const VehiclesState());
 
   Future<void> getAllVehicles() async {
-    var drivers = await getIt<VehiclesService>().getAllVehicles();
-    emit(state.copyWith(drivers: drivers));
+    var vehicles = await getIt<VehiclesService>().getAllVehicles();
+    emit(state.copyWith(vehicles: vehicles));
   }
 }

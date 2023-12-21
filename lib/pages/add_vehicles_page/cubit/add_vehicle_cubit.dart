@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../models/driver_model.dart';
 import '../../../services/vehicles_service.dart';
 import '../../add_driver_page/models/license_category.dart';
 import '../models/vehicle_category.dart';

@@ -78,7 +78,7 @@ class VehiclesPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  state.drivers.isNotEmpty
+                  state.vehicles.isNotEmpty
                       ? RefreshIndicator(
                           onRefresh: () async => await context
                               .read<DriversCubit>()
@@ -87,7 +87,7 @@ class VehiclesPage extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               mainAxisSize: MainAxisSize.max,
-                              children: state.drivers
+                              children: state.vehicles
                                   .map(
                                     (vehicle) => Padding(
                                       padding: EdgeInsets.only(top: 20.h),

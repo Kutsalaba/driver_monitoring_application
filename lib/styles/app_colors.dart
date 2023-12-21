@@ -11,6 +11,7 @@ class AppColors {
   static const dirtyWhite = Color(0xffE3E5E5);
 
   static const brightGrey = Color(0xff404446);
+  static const brightWhite = Color(0xffF7F9FA);
   
   static const contrastBlack = Color(0xff121212);
   static const contrastGrey = Color(0xffe3e5e5);
@@ -18,6 +19,8 @@ class AppColors {
 
   static const glazyBlue = Color(0xff48A7F8);
   static const glazyGrey = Color(0xff5C5C5C);
+
+  static const dingyGrey = Color(0xff262629);
 
   static const luminanceGrey = Color(0xffBBBBBB);
   static const luminanceGreen = Color(0xffECFCE5);

@@ -1,15 +1,15 @@
 part of 'vehicles_cubit.dart';
 
 class VehiclesState {
-  const VehiclesState({this.drivers = const []});
+  const VehiclesState({this.vehicles = const []});
 
-  final List<VehicleModel> drivers;
+  final List<VehicleModel> vehicles;
 
   VehiclesState copyWith({
-    List<VehicleModel>? drivers,
+    List<VehicleModel>? vehicles,
   }) {
     return VehiclesState(
-      drivers: drivers ?? this.drivers,
+      vehicles: vehicles ?? this.vehicles,
     );
   }
 }

@@ -20,8 +20,6 @@ import '../widgets/custom_text_field.dart';
 import '../widgets/multy_alert_dialog.dart';
 import 'cubit/add_vehicle_cubit.dart';
 import 'models/vehicle_category.dart';
-import 'models/vehicle_status_params.dart';
-import 'widgets/vehicle_status_item.dart';
 
 @RoutePage()
 class AddVehiclePage extends StatefulWidget {
