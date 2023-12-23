@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+
 class DeliveryModel {
   final String? deliveryId;
   final String deliveryName;
@@ -14,28 +16,27 @@ class DeliveryModel {
   final String driverId;
 
   DeliveryModel({
-    required this.deliveryId,
+    this.deliveryId,
     required this.deliveryName,
     required this.deliveryDescription,
     required this.deadline,
-    required this.createDate,
-    required this.shipFromLongitude,
-    required this.shipFromLatitude,
+    this.createDate,
+    this.shipFromLongitude,
+    this.shipFromLatitude,
     required this.shipToLongitude,
     required this.shipToLatitude,
-    required this.shipToAddress,
-    required this.shipFromAddress,
+    this.shipToAddress,
+    this.shipFromAddress,
     required this.vehicleId,
     required this.driverId,
   });
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
-      'driver_id': deliveryId,
       'delivery_name': deliveryName,
       'delivery_description': deliveryDescription,
-      'deadline': deadline.millisecondsSinceEpoch,
-      'create_date': createDate?.millisecondsSinceEpoch,
+      // 'deadline': deadline.millisecondsSinceEpoch,
+      'deadline': DateFormat('yyyy-MM-dd HH:mm:ss').format(deadline),
       'shipfrom_longitude': shipFromLongitude,
       'shipfrom_latitude': shipFromLatitude,
       'shipto_longitude': shipToLongitude,
@@ -43,23 +44,34 @@ class DeliveryModel {
       'shipto_address': shipToAddress,
       'shipfrom_address': shipFromAddress,
       'vehicle_id': vehicleId,
-      'driverId': driverId,
+      'driver_id': driverId,
     };
   }
 
   factory DeliveryModel.fromJson(Map<String, dynamic> json) {
     return DeliveryModel(
-      deliveryId: json['driver_id'] != null ? json['driver_id'] as String : null,
+      deliveryId:
+          json['driver_id'] != null ? json['driver_id'] as String : null,
       deliveryName: json['delivery_name'] as String,
       deliveryDescription: json['delivery_description'] as String,
       deadline: DateTime.fromMillisecondsSinceEpoch(json['deadline'] as int),
-      createDate: json['create_date'] != null ? DateTime.fromMillisecondsSinceEpoch(json['create_date'] as int) : null,
-      shipFromLongitude: json['shipfrom_longitude'] != null ? json['shipfrom_longitude'] as double : null,
-      shipFromLatitude: json['shipfrom_latitude'] != null ? json['shipfrom_latitude'] as double : null,
+      createDate: json['create_date'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(json['create_date'] as int)
+          : null,
+      shipFromLongitude: json['shipfrom_longitude'] != null
+          ? json['shipfrom_longitude'] as double
+          : null,
+      shipFromLatitude: json['shipfrom_latitude'] != null
+          ? json['shipfrom_latitude'] as double
+          : null,
       shipToLongitude: json['shipto_longitude'] as double,
       shipToLatitude: json['shipto_latitude'] as double,
-      shipToAddress: json['shipto_address'] != null ? json['shipto_address'] as String : null,
-      shipFromAddress: json['shipfrom_address'] != null ? json['shipfrom_address'] as String : null,
+      shipToAddress: json['shipto_address'] != null
+          ? json['shipto_address'] as String
+          : null,
+      shipFromAddress: json['shipfrom_address'] != null
+          ? json['shipfrom_address'] as String
+          : null,
       vehicleId: json['vehicle_id'] as String,
       driverId: json['driver_id'] as String,
     );

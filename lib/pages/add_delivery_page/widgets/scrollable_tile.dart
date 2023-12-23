@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:driver_monitoring_application/gen/assets.gen.dart';
 import 'package:driver_monitoring_application/pages/add_delivery_page/cubit/add_delivery_cubit.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +64,9 @@ class ScrollableTile extends StatelessWidget {
           ],
         ),
         onTap: () {
-          context.read<AddDeliveryCubit>().selectDriverTile(index);
+          isDriver
+              ? context.read<AddDeliveryCubit>().selectDriverTile(index)
+              : context.read<AddDeliveryCubit>().selectVehicleTile(index);
         },
         // tileColor: AppColors.dirtyWhite,
         // shape: RoundedRectangleBorder(

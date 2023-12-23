@@ -9,6 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../models/vehicle_model.dart';
 import '../../../services/vehicles_service.dart';
+import '../../widgets/confirmaton_alert_dialog.dart';
 import 'vehicle_info_dialog.dart';
 
 class VehicleTile extends StatelessWidget {
@@ -79,8 +80,17 @@ class VehicleTile extends StatelessWidget {
                           padding: EdgeInsets.only(top: 6.h),
                           child: GestureDetector(
                             onTap: () async {
-                              await getIt<VehiclesService>()
-                                  .deleteDriver(vehicle.vehicleId!);
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return ConfirmationAlertDialog(
+                                    onPressed: () async {
+                                      await getIt<VehiclesService>()
+                                          .deleteDriver(vehicle.vehicleId!);
+                                    },
+                                  );
+                                },
+                              );
                             },
                             child: SvgPicture.asset(
                               Assets.icons.closeRed,

@@ -60,7 +60,7 @@ class AddDriverCubit extends Cubit<AddDriverState> {
     emit(state.copyWith());
   }
 
-  bool confirmInput() {
+  bool confirmInputAddDriver() {
     if (nameController.text.isNotEmpty &&
         rankController.text.isNotEmpty &&
         ageController.text.isNotEmpty &&

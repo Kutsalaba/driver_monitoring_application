@@ -7,7 +7,7 @@ import '../../../services/injectible/injectible_init.dart';
 
 part 'vehicles_state.dart';
 
-@singleton
+@injectable
 class VehiclesCubit extends Cubit<VehiclesState> {
   VehiclesCubit() : super(const VehiclesState());
 

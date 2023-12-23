@@ -13,4 +13,9 @@ class HomeCubit extends Cubit<HomeState> {
     var deliveries = await getIt<DeliveriesService>().getUserDeliveries(userId);
     emit(HomeLoadedState(deliveries: deliveries));
   }
+
+  Future<void> getChiefDeliveries() async {
+    var deliveries = await getIt<DeliveriesService>().getChiefDeliveries();
+    emit(HomeLoadedState(deliveries: deliveries));
+  }
 }

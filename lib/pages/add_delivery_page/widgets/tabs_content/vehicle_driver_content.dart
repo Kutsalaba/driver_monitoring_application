@@ -17,10 +17,13 @@ class VehicleDriverContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AddDeliveryCubit, AddDeliveryState>(
       builder: (context, state) {
-        var vehicles = context.read<AddDeliveryCubit>().state.vehicles;
-        var drivers = context.read<AddDeliveryCubit>().state.deliveryDrivers;
+        var deliveryVehicles =
+            context.read<AddDeliveryCubit>().state.deliveryVehicles;
+        var deliveryDrivers =
+            context.read<AddDeliveryCubit>().state.deliveryDrivers;
         log(state.toString());
-        return (state.deliveryDrivers.isNotEmpty && state.vehicles.isNotEmpty)
+        return (state.deliveryDrivers.isNotEmpty &&
+                state.deliveryVehicles.isNotEmpty)
             ? Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -37,29 +40,33 @@ class VehicleDriverContent extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20.w),
                     child: SizedBox(
-                      height: 180.h,
+                      height: 200.h,
                       child: Scrollbar(
                         child: ListView.builder(
-                          primary: false,
-                          itemCount: vehicles.length,
-                          itemBuilder: (context, index) => Padding(
-                            padding: EdgeInsets.symmetric(
-                              vertical: 6.h,
-                              horizontal: 10.w,
-                            ),
-                            child: ScrollableTile(
-                              index: index,
-                              isDriver: false,
-                              params: ScrollableTileParams(
-                                title: vehicles[index].vehicleName,
-                                liscenseCategories:
-                                    'License category: ${vehicles[index].licenseCategory}',
-                                description:
-                                    'Category: ${vehicles[index].vehicleCategory}',
-                              ),
-                            ),
-                          ),
-                        ),
+                            primary: false,
+                            itemCount: deliveryVehicles.length,
+                            itemBuilder: (context, index) {
+                              var vehicle = deliveryVehicles[index].vehicle;
+                              return Padding(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: 6.h,
+                                  horizontal: 10.w,
+                                ),
+                                child: ScrollableTile(
+                                  index: index,
+                                  isDriver: false,
+                                  params: ScrollableTileParams(
+                                    title: vehicle.vehicleName,
+                                    liscenseCategories:
+                                        'License category: ${vehicle.licenseCategory}',
+                                    description:
+                                        'Category: ${vehicle.vehicleCategory}',
+                                    isSelected:
+                                        deliveryVehicles[index].isSelected,
+                                  ),
+                                ),
+                              );
+                            }),
                       ),
                     ),
                   ),
@@ -76,13 +83,13 @@ class VehicleDriverContent extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20.w),
                     child: SizedBox(
-                      height: 180.h,
+                      height: 200.h,
                       child: Scrollbar(
                         child: ListView.builder(
                             primary: false,
-                            itemCount: drivers.length,
+                            itemCount: deliveryDrivers.length,
                             itemBuilder: (context, index) {
-                              var driver = drivers[index].driver;
+                              var driver = deliveryDrivers[index].driver;
                               return Padding(
                                 padding: EdgeInsets.symmetric(
                                   vertical: 6.h,
@@ -96,37 +103,13 @@ class VehicleDriverContent extends StatelessWidget {
                                     liscenseCategories:
                                         'Categories: ${categoriesToString(driver)}',
                                     description:
-                                        'Rank: ${drivers[index].driver}',
-                                    isSelected: drivers[index].isSelected,
+                                        'Rank: ${deliveryDrivers[index].driver}',
+                                    isSelected:
+                                        deliveryDrivers[index].isSelected,
                                   ),
                                 ),
                               );
                             }),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 15.h),
-                  Center(
-                    child: SizedBox(
-                      width: 340.w,
-                      height: 50.h,
-                      child: ElevatedButton(
-                        onPressed: () async {},
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.dingyGrey,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12.w),
-                          ),
-                        ),
-                        child: Text(
-                          'NEXT',
-                          style: Theme.of(context)
-                              .primaryTextTheme
-                              .titleMedium!
-                              .copyWith(
-                                color: AppColors.white,
-                              ),
-                        ),
                       ),
                     ),
                   ),

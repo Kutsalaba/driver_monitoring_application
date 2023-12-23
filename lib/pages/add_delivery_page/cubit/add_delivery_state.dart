@@ -2,20 +2,24 @@ part of 'add_delivery_cubit.dart';
 
 class AddDeliveryState {
   const AddDeliveryState({
-    this.vehicles = const [],
+    this.deliveryVehicles = const [],
     this.deliveryDrivers = const [],
+    this.delivery,
   });
 
-  final List<VehicleModel> vehicles;
+  final List<DeliveryVehicleModel> deliveryVehicles;
   final List<DeliveryDriverModel> deliveryDrivers;
+  final DeliveryModel? delivery;
 
   AddDeliveryState copyWith({
-    List<VehicleModel>? vehicles,
+    List<DeliveryVehicleModel>? deliveryVehicles,
     List<DeliveryDriverModel>? deliveryDrivers,
+    DeliveryModel? delivery,
   }) {
     return AddDeliveryState(
-      vehicles: vehicles ?? this.vehicles,
+      deliveryVehicles: deliveryVehicles ?? this.deliveryVehicles,
       deliveryDrivers: deliveryDrivers ?? this.deliveryDrivers,
+      delivery: delivery ?? this.delivery,
     );
   }
 }
@@ -24,7 +28,8 @@ final class AddDeliveryInitial extends AddDeliveryState {}
 
 final class AddDeliveryLoadedState extends AddDeliveryState {
   AddDeliveryLoadedState({
-    super.vehicles,
+    super.deliveryVehicles,
     super.deliveryDrivers,
+    super.delivery,
   });
 }

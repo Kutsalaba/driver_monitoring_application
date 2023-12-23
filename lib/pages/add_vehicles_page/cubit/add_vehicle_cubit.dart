@@ -132,12 +132,11 @@ class AddVehicleCubit extends Cubit<AddVehicleState> {
     emit(state.copyWith(vehiclesStatus: statuses));
   }
 
-    bool confirmInput() {
+  bool confirmInputAddVehicle() {
     if (nameController.text.isNotEmpty &&
         fuelController.text.isNotEmpty &&
         maxDistanceController.text.isNotEmpty &&
         capacityController.text.isNotEmpty) {
-
       // log(nameController.text);
       // log(rankController.text);
       // log(ageController.text);

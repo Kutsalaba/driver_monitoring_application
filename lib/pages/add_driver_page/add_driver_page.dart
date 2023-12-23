@@ -233,7 +233,9 @@ class _AddDriverPageState extends State<AddDriverPage> {
                         child: ElevatedButton(
                           onPressed: () async {
                             var route = AutoRouter.of(context);
-                            if (context.read<AddDriverCubit>().confirmInput()) {
+                            if (context
+                                .read<AddDriverCubit>()
+                                .confirmInputAddDriver()) {
                               await context.read<AddDriverCubit>().addDriver();
                               if (context.mounted) {
                                 Timer? timer = Timer(

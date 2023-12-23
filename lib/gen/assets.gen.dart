@@ -24,6 +24,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/close_red.svg
   String get closeRed => 'assets/icons/close_red.svg';
 
+  /// File path: assets/icons/done.svg
+  String get done => 'assets/icons/done.svg';
+
   /// File path: assets/icons/driver.svg
   String get driver => 'assets/icons/driver.svg';
 
@@ -54,6 +57,7 @@ class $AssetsIconsGen {
         car,
         circlePlus,
         closeRed,
+        done,
         driver,
         home,
         location,

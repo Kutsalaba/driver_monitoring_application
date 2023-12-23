@@ -34,13 +34,13 @@ class DeliveryTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'First Text',
+            deliveryModel.deliveryName,
             style: Theme.of(context).primaryTextTheme.bodyLarge?.copyWith(
                   color: AppColors.contrastBlack,
                 ),
           ),
           Text(
-            'Second Text',
+            deliveryModel.deliveryDescription,
             style: Theme.of(context).primaryTextTheme.bodyMedium?.copyWith(
                   color: AppColors.glazyGrey,
                 ),

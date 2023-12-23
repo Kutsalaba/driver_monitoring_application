@@ -15,7 +15,6 @@ import '../../services/injectible/injectible_init.dart';
 import '../../styles/app_colors.dart';
 import '../add_driver_page/models/license_category.dart';
 import '../widgets/custom_app_bar.dart';
-import '../widgets/custom_menu_drawer/custom_menu_drawer.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/multy_alert_dialog.dart';
 import 'cubit/add_vehicle_cubit.dart';
@@ -34,7 +33,6 @@ class _AddVehiclePageState extends State<AddVehiclePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.contrastBlack,
-      drawer: const CustomMenuDrawer(),
       appBar: CustomAppBar(
         title: LocaleKeys.vehicles.tr(),
       ),
@@ -283,7 +281,7 @@ class _AddVehiclePageState extends State<AddVehiclePage> {
                             var route = AutoRouter.of(context);
                             if (context
                                 .read<AddVehicleCubit>()
-                                .confirmInput()) {
+                                .confirmInputAddVehicle()) {
                               await context
                                   .read<AddVehicleCubit>()
                                   .addVehicle();

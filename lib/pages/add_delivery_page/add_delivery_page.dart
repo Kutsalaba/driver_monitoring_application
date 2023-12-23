@@ -9,10 +9,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../services/injectible/injectible_init.dart';
 import '../../styles/app_colors.dart';
-import '../widgets/custom_menu_drawer/custom_menu_drawer.dart';
 import 'widgets/delivery_tab.dart';
-import 'widgets/tabs_content/vehicle_driver_content.dart';
 import 'widgets/tabs_content/info_tab_content.dart';
+import 'widgets/tabs_content/location_tab_content.dart';
+import 'widgets/tabs_content/vehicle_driver_content.dart';
 
 @RoutePage()
 class AddDeliveryPage extends StatefulWidget {
@@ -30,7 +30,6 @@ class _AddDeliveryPageState extends State<AddDeliveryPage> {
       child: SafeArea(
         child: Scaffold(
           backgroundColor: AppColors.contrastBlack,
-          drawer: const CustomMenuDrawer(),
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(200.h),
             child: CustomAppBar(
@@ -74,16 +73,11 @@ class _AddDeliveryPageState extends State<AddDeliveryPage> {
           ),
           body: BlocProvider(
             create: (context) => getIt<AddDeliveryCubit>()..load(),
-            child: TabBarView(
+            child: const TabBarView(
               children: [
-                const InfoTabContent(),
+                InfoTabContent(),
                 VehicleDriverContent(),
-                Center(
-                  child: Text(
-                    '3',
-                    style: Theme.of(context).primaryTextTheme.bodyLarge,
-                  ),
-                ),
+                LocationTabContent(),
               ],
             ),
           ),

@@ -43,7 +43,7 @@ _i1.GetIt $initGetIt(
     environmentFilter,
   );
   final registerModule = _$RegisterModule();
-  gh.factory<_i3.AddDeliveryCubit>(() => _i3.AddDeliveryCubit());
+  gh.singleton<_i3.AddDeliveryCubit>(_i3.AddDeliveryCubit());
   gh.factory<_i4.AddDriverCubit>(() => _i4.AddDriverCubit());
   gh.factory<_i5.AddVehicleCubit>(() => _i5.AddVehicleCubit());
   gh.lazySingleton<_i6.AppRouter>(() => registerModule.appRouter);
@@ -55,7 +55,7 @@ _i1.GetIt $initGetIt(
   gh.lazySingleton<_i11.DriversService>(() => registerModule.driversService);
   gh.lazySingleton<_i12.SecureStorage>(() => registerModule.secureStorage);
   gh.factory<_i13.SplashCubit>(() => _i13.SplashCubit());
-  gh.singleton<_i14.VehiclesCubit>(_i14.VehiclesCubit());
+  gh.factory<_i14.VehiclesCubit>(() => _i14.VehiclesCubit());
   gh.lazySingleton<_i15.VehiclesService>(() => registerModule.vehiclesService);
   gh.factory<_i16.AuthDataSourceI>(
       () => _i16.AuthDataSourceImpl(dbService: gh<_i8.AuthService>()));
