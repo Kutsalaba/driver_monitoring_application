@@ -16,7 +16,7 @@ import '../models/delivery_vehicle_model.dart';
 
 part 'add_delivery_state.dart';
 
-@singleton
+@injectable
 class AddDeliveryCubit extends Cubit<AddDeliveryState> {
   AddDeliveryCubit() : super(AddDeliveryInitial());
 

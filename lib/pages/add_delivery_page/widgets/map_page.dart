@@ -6,21 +6,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class MapDialog extends StatefulWidget {
-  const MapDialog({
+@RoutePage()
+class MapPage extends StatefulWidget {
+  const MapPage({
     super.key,
     required this.markerId,
-    required this.onPressed,
   });
 
   final String markerId;
-  final Future<void> Function(LatLng latLng) onPressed;
 
   @override
-  State<MapDialog> createState() => _MapDialogState();
+  State<MapPage> createState() => _MapPageState();
 }
 
-class _MapDialogState extends State<MapDialog> {
+class _MapPageState extends State<MapPage> {
   late GoogleMapController? mapController;
   LatLng? tempLatLng;
 
@@ -52,6 +51,7 @@ class _MapDialogState extends State<MapDialog> {
           },
         ),
         Visibility(
+          visible: tempLatLng != null,
           child: Positioned(
             bottom: 120.h,
             right: 10.w,
@@ -61,9 +61,7 @@ class _MapDialogState extends State<MapDialog> {
               onPressed: () async {
                 var router = AutoRouter.of(context);
                 if (tempLatLng != null) {
-                  await widget.onPressed.call(tempLatLng!);
-
-                  router.pop();
+                  await router.pop(tempLatLng);
                 }
               },
             ),

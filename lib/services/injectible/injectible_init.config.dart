@@ -43,7 +43,7 @@ _i1.GetIt $initGetIt(
     environmentFilter,
   );
   final registerModule = _$RegisterModule();
-  gh.singleton<_i3.AddDeliveryCubit>(_i3.AddDeliveryCubit());
+  gh.factory<_i3.AddDeliveryCubit>(() => _i3.AddDeliveryCubit());
   gh.factory<_i4.AddDriverCubit>(() => _i4.AddDriverCubit());
   gh.factory<_i5.AddVehicleCubit>(() => _i5.AddVehicleCubit());
   gh.lazySingleton<_i6.AppRouter>(() => registerModule.appRouter);

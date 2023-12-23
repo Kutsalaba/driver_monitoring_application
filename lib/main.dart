@@ -44,9 +44,6 @@ class MainApp extends StatelessWidget {
         BlocProvider.value(
           value: appStateCubit,
         ),
-        // BlocProvider(
-        //   create: (context) => getIt<AppInternalNotificationsBloc>(),
-        // ),
       ],
       child: BlocBuilder<AppStateCubit, AppState>(
         bloc: appStateCubit,
