@@ -44,7 +44,6 @@ class LocationService {
           'latitude': latLng.latitude,
         },
       );
-      log('SUCCSEE');
     } catch (e) {
       throw Exception(e);
     }

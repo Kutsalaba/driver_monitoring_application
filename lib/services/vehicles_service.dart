@@ -32,7 +32,6 @@ class VehiclesService {
         '${UrlConstants.baseUrl}/vehicle',
         data: vehicle.toJson(),
       );
-      log('SUCCSEE');
     } catch (e) {
       throw Exception(e);
     }
