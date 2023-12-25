@@ -76,9 +76,9 @@ class $AssetsImagesGen {
   AssetGenImage get defaultCar =>
       const AssetGenImage('assets/images/default_car.jpg');
 
-  /// File path: assets/images/default_driver.jpg
+  /// File path: assets/images/default_driver.png
   AssetGenImage get defaultDriver =>
-      const AssetGenImage('assets/images/default_driver.jpg');
+      const AssetGenImage('assets/images/default_driver.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [defaultCar, defaultDriver];

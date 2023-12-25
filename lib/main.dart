@@ -19,17 +19,7 @@ Future<void> main() async {
   //GetIt setup
   configureDependencies();
 
-  runApp(
-    EasyLocalization(
-      supportedLocales: const [
-        Locale('en'),
-        Locale('ua'),
-      ],
-      path: 'assets/localization',
-      startLocale: const Locale('en'),
-      child: MainApp(),
-    ),
-  );
+  runApp(MainApp());
 }
 
 class MainApp extends StatelessWidget {
@@ -48,30 +38,38 @@ class MainApp extends StatelessWidget {
       child: BlocBuilder<AppStateCubit, AppState>(
         bloc: appStateCubit,
         builder: (context, state) {
-          return ScreenUtilInit(
-            designSize: const Size(393, 786),
-            minTextAdapt: true,
-            splitScreenMode: true,
-            builder: (context, child) {
-              return MaterialApp.router(
-                debugShowCheckedModeBanner: false,
-                localizationsDelegates: context.localizationDelegates,
-                supportedLocales: context.supportedLocales,
-                locale: context.locale,
-                theme: AppThemeData().defaultThemeData,
-                routerConfig: getIt<AppRouter>().config(),
-                builder: (context, child) => ResponsiveBreakpoints.builder(
-                  child: child!,
-                  breakpoints: [
-                    const Breakpoint(start: 0, end: 450, name: MOBILE),
-                    const Breakpoint(start: 451, end: 800, name: TABLET),
-                    const Breakpoint(start: 801, end: 1920, name: DESKTOP),
-                    const Breakpoint(
-                        start: 1921, end: double.infinity, name: '4K'),
-                  ],
-                ),
-              );
-            },
+          return EasyLocalization(
+            supportedLocales: const [
+              Locale('en'),
+              Locale('ua'),
+            ],
+            path: 'assets/localization',
+            startLocale: const Locale('en'),
+            child: ScreenUtilInit(
+              designSize: const Size(393, 786),
+              minTextAdapt: true,
+              splitScreenMode: true,
+              builder: (context, child) {
+                return MaterialApp.router(
+                  debugShowCheckedModeBanner: false,
+                  localizationsDelegates: context.localizationDelegates,
+                  supportedLocales: context.supportedLocales,
+                  locale: context.locale,
+                  theme: getIt<AppThemeData>().defaultThemeData,
+                  routerConfig: getIt<AppRouter>().config(),
+                  builder: (context, child) => ResponsiveBreakpoints.builder(
+                    child: child!,
+                    breakpoints: [
+                      const Breakpoint(start: 0, end: 450, name: MOBILE),
+                      const Breakpoint(start: 451, end: 800, name: TABLET),
+                      const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+                      const Breakpoint(
+                          start: 1921, end: double.infinity, name: '4K'),
+                    ],
+                  ),
+                );
+              },
+            ),
           );
         },
       ),

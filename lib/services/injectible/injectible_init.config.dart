@@ -49,7 +49,7 @@ _i1.GetIt $initGetIt(
   gh.factory<_i4.AddDriverCubit>(() => _i4.AddDriverCubit());
   gh.factory<_i5.AddVehicleCubit>(() => _i5.AddVehicleCubit());
   gh.lazySingleton<_i6.AppRouter>(() => registerModule.appRouter);
-  gh.lazySingleton<_i7.AppThemeData>(() => registerModule.appThemeData);
+  gh.lazySingleton<_i7.AppThemeData>(() => _i7.AppThemeData());
   gh.lazySingleton<_i8.AuthService>(() => registerModule.authService);
   gh.lazySingleton<_i9.DeliveriesService>(
       () => registerModule.deliveriesService);

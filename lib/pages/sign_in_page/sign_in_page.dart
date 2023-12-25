@@ -126,31 +126,6 @@ class SignInPage extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 20.h),
-                        Wrap(
-                          alignment: WrapAlignment.center,
-                          children: [
-                            const Text(
-                              'Don\'t have an account? ',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: const Text(
-                                'Register',
-                                style: TextStyle(
-                                  color: Color(0xFFFFE500),
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 10),
                       ],
                     ),
                   ),

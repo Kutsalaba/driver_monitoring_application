@@ -10,6 +10,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../models/driver_model.dart';
 import '../../../services/injectible/injectible_init.dart';
 import '../../../utils/helpers.dart';
+import '../../widgets/confirmaton_alert_dialog.dart';
 import 'driver_info_dialog.dart';
 
 class DriverTile extends StatelessWidget {
@@ -23,17 +24,18 @@ class DriverTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => showDialog(
-        context: context,
-        builder: (context) {
-          return Center(
-            child: DriverInfoDialog(
-              imagePath: Assets.images.defaultDriver.path,
-              driverModel: driver,
-            ),
-          );
-        },
-      ),
+      //TODO
+      // onTap: () => showDialog(
+      //   context: context,
+      //   builder: (context) {
+      //     return Center(
+      //       child: DriverInfoDialog(
+      //         imagePath: Assets.images.defaultDriver.path,
+      //         driverModel: driver,
+      //       ),
+      //     );
+      //   },
+      // ),
       child: Container(
         height: 100.h,
         decoration: BoxDecoration(
@@ -80,11 +82,19 @@ class DriverTile extends StatelessWidget {
                           padding: EdgeInsets.only(top: 6.h),
                           child: GestureDetector(
                             onTap: () async {
-                              // TODO add alert
-                              log('Delete ${driver.userId}');
-                              await getIt<DriversCubit>()
-                                  .deleteDriver(driver.userId!);
-                              log('Successfully deleted');
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return ConfirmationAlertDialog(
+                                    onPressed: () async {
+                                      log('Delete ${driver.userId}');
+                                      await getIt<DriversCubit>()
+                                          .deleteDriver(driver.userId!);
+                                      log('Successfully deleted');
+                                    },
+                                  );
+                                },
+                              );
                             },
                             child: SvgPicture.asset(
                               Assets.icons.closeRed,

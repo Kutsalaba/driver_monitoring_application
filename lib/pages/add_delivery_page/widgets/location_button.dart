@@ -6,19 +6,36 @@ import '../../../gen/assets.gen.dart';
 import '../../../styles/app_colors.dart';
 
 class LocationButton extends StatelessWidget {
-  const LocationButton({super.key});
+  const LocationButton({
+    super.key,
+    required this.text,
+  });
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50.h,
-      // width: 60.w,
-      color: AppColors.blue,
-      child: Row(
-        children: [
-          SvgPicture.asset(Assets.icons.location),
-          Text('Go to map'),
-        ],
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 20.h),
+      child: Container(
+        height: 50.h,
+        decoration: BoxDecoration(
+          color: AppColors.dirtyWhite,
+          borderRadius: BorderRadius.circular(20.w),
+        ),
+        child: Row(
+          children: [
+            SizedBox(width: 10.w),
+            SvgPicture.asset(Assets.icons.location),
+            SizedBox(width: 10.w),
+            Text(
+              text,
+              style: Theme.of(context).primaryTextTheme.bodyLarge?.copyWith(
+                    color: AppColors.glazyGrey,
+                  ),
+            ),
+          ],
+        ),
       ),
     );
   }

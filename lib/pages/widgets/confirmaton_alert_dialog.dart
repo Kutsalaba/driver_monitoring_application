@@ -14,7 +14,7 @@ class ConfirmationAlertDialog extends StatelessWidget {
     return AlertDialog(
       title: Row(
         children: [
-          Icon(
+          const Icon(
             Icons.warning,
             color: Colors.orange,
           ),

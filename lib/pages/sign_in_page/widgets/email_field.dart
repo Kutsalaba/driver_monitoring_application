@@ -1,3 +1,4 @@
+import 'package:driver_monitoring_application/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class EmailField extends StatelessWidget {
@@ -11,24 +12,24 @@ class EmailField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      cursorColor: const Color(0xFFFFE500),
+      cursorColor: AppColors.blue,
       style: const TextStyle(
         fontSize: 16,
         color: Colors.white,
       ),
       decoration: const InputDecoration(
         errorStyle: TextStyle(
-          color: Color(0xFFFFE500),
+          color: AppColors.blue,
           fontWeight: FontWeight.w500,
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Color(0xFFFFE500),
+            color: AppColors.blue,
           ),
         ),
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Color(0xFFFFE500),
+            color: AppColors.blue,
           ),
         ),
         enabledBorder: OutlineInputBorder(
@@ -41,7 +42,7 @@ class EmailField extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        labelText: 'Email',
+        labelText: 'Login',
         labelStyle: TextStyle(
           fontSize: 16,
           color: Colors.white,

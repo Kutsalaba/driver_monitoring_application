@@ -37,30 +37,32 @@ class VehiclesPage extends StatelessWidget {
             return Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 20.h, bottom: 2.h),
-                    child: Row(
-                      children: [
-                        Text(
-                          LocaleKeys.vehicles.tr(),
-                          style: Theme.of(context)
-                              .primaryTextTheme
-                              .titleMedium
-                              ?.copyWith(
-                                fontWeight: FontWeight.w300,
-                              ),
-                        ),
-                        const Spacer(),
-                        Switch.adaptive(
-                          value: true,
-                          onChanged: (newValue) {
-                            log('SWITCHING!');
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
+                  SizedBox(height: 20.h, width: double.infinity),
+                  // Padding(
+                  //   padding: EdgeInsets.only(top: 20.h, bottom: 2.h),
+                  //   child: Row(
+                  //     children: [
+                  //       Text(
+                  //         LocaleKeys.vehicles.tr(),
+                  //         style: Theme.of(context)
+                  //             .primaryTextTheme
+                  //             .titleMedium
+                  //             ?.copyWith(
+                  //               fontWeight: FontWeight.w300,
+                  //             ),
+                  //       ),
+                  //       const Spacer(),
+                  //       Switch.adaptive(
+                  //         value: true,
+                  //         onChanged: (newValue) {
+                  //           log('SWITCHING!');
+                  //         },
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   ElevatedButton(
                     onPressed: () {
                       AutoRouter.of(context).push(const AddVehicleRoute());

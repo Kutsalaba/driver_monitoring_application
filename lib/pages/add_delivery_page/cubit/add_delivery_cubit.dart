@@ -18,7 +18,7 @@ part 'add_delivery_state.dart';
 
 @injectable
 class AddDeliveryCubit extends Cubit<AddDeliveryState> {
-  AddDeliveryCubit() : super(AddDeliveryState());
+  AddDeliveryCubit() : super(const AddDeliveryState());
 
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
@@ -39,7 +39,6 @@ class AddDeliveryCubit extends Cubit<AddDeliveryState> {
         .map<DeliveryVehicleModel>(
             (vehicle) => DeliveryVehicleModel(vehicle: vehicle))
         .toList();
-    //TODO clean
 
     emit(state.copyWith(
       deliveryVehicles: deliveryVehicles,
@@ -86,6 +85,7 @@ class AddDeliveryCubit extends Cubit<AddDeliveryState> {
     shipFromAddress = placemarks.first.street.toString();
     log('Lat: ${shipFromLatLng!.latitude}, long: ${shipFromLatLng!.longitude}');
     log(shipFromAddress!);
+    emit(state.copyWith());
   }
 
   Future<void> selectToLatLng(LatLng latLng) async {
@@ -97,6 +97,7 @@ class AddDeliveryCubit extends Cubit<AddDeliveryState> {
     shipToAddress = placemarks.first.street.toString();
     log('Lat: ${shipToLatLng!.latitude}, long: ${shipToLatLng!.longitude}');
     log(shipToAddress!);
+     emit(state.copyWith());
   }
 
   void selectVehicleTile(int index) {

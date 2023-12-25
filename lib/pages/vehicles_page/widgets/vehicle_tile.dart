@@ -23,17 +23,18 @@ class VehicleTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => showDialog(
-        context: context,
-        builder: (context) {
-          return Center(
-            child: VehicleInfoDialog(
-              imagePath: Assets.images.defaultDriver.path,
-              vehicleModel: vehicle,
-            ),
-          );
-        },
-      ),
+      //TODO
+      // onTap: () => showDialog(
+      //   context: context,
+      //   builder: (context) {
+      //     return Center(
+      //       child: VehicleInfoDialog(
+      //         imagePath: Assets.images.defaultDriver.path,
+      //         vehicleModel: vehicle,
+      //       ),
+      //     );
+      //   },
+      // ),
       child: Container(
         height: 100.h,
         decoration: BoxDecoration(

@@ -3,10 +3,9 @@ import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../routes/app_router.dart';
-import '../../styles/app_theme_data.dart';
+import '../auth_service.dart';
 import '../deliveries_service.dart';
 import '../drivers_service.dart';
-import '../auth_service.dart';
 import '../location_service.dart';
 import '../secure_storage_service.dart';
 import 'injectible_init.config.dart';
@@ -24,9 +23,6 @@ GetIt configureDependencies() => $initGetIt(getIt);
 abstract class RegisterModule {
   @lazySingleton
   AppRouter get appRouter => AppRouter();
-
-  @lazySingleton
-  AppThemeData get appThemeData => AppThemeData();
 
   @lazySingleton
   AuthService get authService => AuthService();

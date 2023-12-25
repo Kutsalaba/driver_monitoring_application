@@ -37,7 +37,7 @@ class _LocationTabContentState extends State<LocationTabContent> {
         log(getIt<AddDeliveryCubit>().state.toString());
         var cubit = context.read<AddDeliveryCubit>();
         return Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
           child: Column(
             children: [
               GestureDetector(
@@ -51,7 +51,9 @@ class _LocationTabContentState extends State<LocationTabContent> {
                     cubit.selectFromLatLng(latLng);
                   }
                 },
-                child: const LocationButton(),
+                child: LocationButton(
+                    text: context.read<AddDeliveryCubit>().shipFromAddress ??
+                        'Select point from'),
               ),
               GestureDetector(
                 onTap: () async {
@@ -64,8 +66,11 @@ class _LocationTabContentState extends State<LocationTabContent> {
                     cubit.selectToLatLng(latLng);
                   }
                 },
-                child: const LocationButton(),
+                child: LocationButton(
+                    text: context.read<AddDeliveryCubit>().shipToAddress ??
+                        'Select point to'),
               ),
+              SizedBox(height: 20.h),
               Center(
                 child: SizedBox(
                   width: 320.w,
