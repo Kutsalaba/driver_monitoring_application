@@ -12,6 +12,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../cubit/app_state.dart';
 import '../../gen/assets.gen.dart';
 import '../../routes/app_router.gr.dart';
+import '../../services/injectible/injectible_init.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_menu_drawer/custom_menu_drawer.dart';
 import 'widgets/delivery_tile.dart';
@@ -30,12 +31,7 @@ class HomePage extends StatelessWidget {
         title: LocaleKeys.deliveries.tr(),
       ),
       body: BlocProvider(
-        create: (context) {
-          if (user.chiefFlag!) {
-            return HomeCubit()..getChiefDeliveries();
-          }
-          return HomeCubit()..getUserDeliveries(user.userId!);
-        },
+        create: (context) => getIt<HomeCubit>()..load(user),
         child: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             return Column(

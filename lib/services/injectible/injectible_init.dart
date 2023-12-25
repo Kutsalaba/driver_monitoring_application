@@ -7,6 +7,7 @@ import '../../styles/app_theme_data.dart';
 import '../deliveries_service.dart';
 import '../drivers_service.dart';
 import '../auth_service.dart';
+import '../location_service.dart';
 import '../secure_storage_service.dart';
 import 'injectible_init.config.dart';
 
@@ -41,4 +42,7 @@ abstract class RegisterModule {
 
   @lazySingleton
   DeliveriesService get deliveriesService => DeliveriesService();
+
+  @lazySingleton
+  LocationService get locationService => LocationService();
 }

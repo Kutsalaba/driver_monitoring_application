@@ -18,7 +18,7 @@ part 'add_delivery_state.dart';
 
 @injectable
 class AddDeliveryCubit extends Cubit<AddDeliveryState> {
-  AddDeliveryCubit() : super(AddDeliveryInitial());
+  AddDeliveryCubit() : super(AddDeliveryState());
 
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
@@ -40,7 +40,8 @@ class AddDeliveryCubit extends Cubit<AddDeliveryState> {
             (vehicle) => DeliveryVehicleModel(vehicle: vehicle))
         .toList();
     //TODO clean
-    emit(AddDeliveryLoadedState(
+
+    emit(state.copyWith(
       deliveryVehicles: deliveryVehicles,
       deliveryDrivers: deliveryDrivers,
     ));
@@ -124,7 +125,7 @@ class AddDeliveryCubit extends Cubit<AddDeliveryState> {
     emit(state.copyWith(deliveryDrivers: deliveryDrivers));
   }
 
-  bool confirmInputAddVehicle() {
+  bool confirmInputAddDelivery() {
     bool hasSelectedVehicle =
         state.deliveryVehicles.any((vehicle) => vehicle.isSelected);
     bool hasSelectedDriver =

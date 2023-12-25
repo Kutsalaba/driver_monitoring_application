@@ -23,13 +23,3 @@ class AddDeliveryState {
     );
   }
 }
-
-final class AddDeliveryInitial extends AddDeliveryState {}
-
-final class AddDeliveryLoadedState extends AddDeliveryState {
-  AddDeliveryLoadedState({
-    super.deliveryVehicles,
-    super.deliveryDrivers,
-    super.delivery,
-  });
-}

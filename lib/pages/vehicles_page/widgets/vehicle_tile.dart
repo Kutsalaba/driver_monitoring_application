@@ -86,7 +86,7 @@ class VehicleTile extends StatelessWidget {
                                   return ConfirmationAlertDialog(
                                     onPressed: () async {
                                       await getIt<VehiclesService>()
-                                          .deleteDriver(vehicle.vehicleId!);
+                                          .deleteVehicle(vehicle.vehicleId!);
                                     },
                                   );
                                 },

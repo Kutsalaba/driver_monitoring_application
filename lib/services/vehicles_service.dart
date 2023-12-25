@@ -38,7 +38,7 @@ class VehiclesService {
     }
   }
 
-  Future<void> deleteDriver(String vehicleId) async {
+  Future<void> deleteVehicle(String vehicleId) async {
     try {
       await _dio.delete('${UrlConstants.baseUrl}/vehicle/$vehicleId');
     } catch (e) {

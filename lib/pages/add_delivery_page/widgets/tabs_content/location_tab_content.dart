@@ -35,7 +35,7 @@ class _LocationTabContentState extends State<LocationTabContent> {
     return BlocBuilder<AddDeliveryCubit, AddDeliveryState>(
       builder: (context, state) {
         log(getIt<AddDeliveryCubit>().state.toString());
-        var cubit = getIt<AddDeliveryCubit>();
+        var cubit = context.read<AddDeliveryCubit>();
         return Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
@@ -44,7 +44,7 @@ class _LocationTabContentState extends State<LocationTabContent> {
                 onTap: () async {
                   var latLng = await AutoRouter.of(context).push(
                     MapRoute(
-                      markerId: 'selectToLatLng',
+                      markerId: 'selectFromLatLng',
                     ),
                   );
                   if (latLng is LatLng) {
@@ -73,7 +73,8 @@ class _LocationTabContentState extends State<LocationTabContent> {
                   child: ElevatedButton(
                     onPressed: () async {
                       var route = AutoRouter.of(context);
-                      if (cubit.confirmInputAddVehicle()) {
+                      if (cubit.confirmInputAddDelivery()) {
+                        await cubit.addNewDelivery();
                         if (context.mounted) {
                           Timer? timer =
                               Timer(const Duration(milliseconds: 1800), () {
@@ -93,7 +94,6 @@ class _LocationTabContentState extends State<LocationTabContent> {
                             timer?.cancel();
                             timer = null;
                           });
-                          await cubit.addNewDelivery();
                         }
                       } else {
                         if (context.mounted) {
